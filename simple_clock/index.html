@@ -1,26 +1,40 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <link rel="stylesheet" href="main.css" />
 
-    <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
+    <title>My Clock</title>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
     <script src="app.js" defer></script>
+    <script src="clock.js"></script>
+    <script src="stopWatch.js"></script>
+    <script src="alarm.js"></script>
+    <script src="controller.js"></script>
 
   </head>
 
   <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+      <div id="navbar">
+          <div class="navbar-item" onclick="callClock()">
+              <a>Clock</a>
+          </div>
+          <div class="navbar-item" onclick="callStopWatch()">
+              <a>StopWatch</a>
+          </div>
+          <div class="navbar-item" onclick="callAlarm()">
+              <a>Alarm</a>
+          </div>
+      </div>
+      <div id="main">
+          
+      </div>
+      <div id="submain">
+
+      </div>
   </body>
 
 </html>
