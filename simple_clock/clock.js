@@ -33,6 +33,7 @@
 
     focusOnClock() {
       this.updateClock();
+      this.stopUpdate();
       this._interval = window.setInterval((this.updateClock).bind(this), 100);
     },
 
@@ -45,7 +46,7 @@
     },
 
     drawClock() {
-      var info = document.createElement('p');
+      var info = document.createElement('span');
       info.textContent = this._time;
       this._wrapper.appendChild(info);
     },

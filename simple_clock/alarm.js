@@ -1,10 +1,9 @@
 (function (exports) {
 
   var Alarm = function () {
-    this._tHour = 0;
     this._tMinute = 0;
     this._tSecond = 0;
-    this._timeout = null;
+    this._alarmId = null;
     this._on = false;
     this._wrapper = null;
   }
@@ -27,18 +26,21 @@
       this._wrapper = document.querySelector('#main');
       window.addEventListener('focusOnAlarm', this);
       window.addEventListener('loseFocusOnAlarm', this);
+      navigator.mozSetMessageHandler("alarm", this.alarmTrigger.bind(this));
     },
 
-    resetWrapper(){
+    resetWrapper() {
       this._wrapper.innerHTML = '';
     },
 
     drawAlarm() {
       var buff = document.createDocumentFragment();
-      var param = [['Hour', 0, 23], ['Minute', 0, 59], ['Second', 0, 59]];
+      var param = [['Minute', 0, 59], ['Second', 0, 59]];
       param.forEach((function (element) {
         var input = document.createElement('input');
         var label = document.createElement('span');
+        var br = document.createElement('br');
+        label.innerHTML = element[0] + ':';
         input.id = element[0].toLowerCase();
         input.setAttribute('type', 'number');
         input.min = element[1];
@@ -48,9 +50,9 @@
           this.updateTime();
           this.setAlarm();
         }).bind(this);
-        label.innerHTML = element[0] + ':';
         buff.appendChild(label);
         buff.appendChild(input);
+        buff.appendChild(br);
       }).bind(this));
       var button = document.createElement('input');
       button.id = 'hint';
@@ -63,14 +65,12 @@
       this._wrapper.appendChild(buff);
     },
 
-    drawTime(){
-      document.querySelector('#hour').value = this._tHour;
+    drawTime() {
       document.querySelector('#minute').value = this._tMinute;
       document.querySelector('#second').value = this._tSecond;
     },
 
     updateTime() {
-      this._tHour = document.querySelector('#hour').value;
       this._tMinute = document.querySelector('#minute').value;
       this._tSecond = document.querySelector('#second').value;
     },
@@ -80,44 +80,50 @@
       if (this._on) {
         this._on = false;
         button.value = 'Off';
-        window.clearTimeout(this._timeout);
+        this.stopAlarm();
       }
       else {
-        this.setAlarm();
         this._on = true;
         button.value = 'On';
+        this.setAlarm();
       }
     },
 
     setAlarm() {
-      window.clearTimeout(this._timeout);
-      var isTomorrow = false;
+      this.stopAlarm();
+
       var now = new Date();
       var hour = now.getHours();
       var minute = now.getMinutes();
       var second = now.getSeconds();
-      var tHour = document.querySelector('#hour').value;
-      var tMinute = document.querySelector('#minute').value;
-      var tSecond = document.querySelector('#second').value;
+      var tMinute = parseInt(document.querySelector('#minute').value);
+      var tSecond = parseInt(document.querySelector('#second').value);
       var year = now.getFullYear();
       var month = now.getMonth();
       var day = now.getDate();
-      if (tHour < hour)
-        isTomorrow = true;
-      else if (tHour == hour && tMinute < minute)
-        isTomorrow = true;
-      else if (tHour == hour && tMinute == minute && tSecond < second)
-        isTomorrow = true;
-      if (isTomorrow)
-        day += 1;
-      var targetTime = (new Date(year, month, day, tHour, tMinute, tSecond, now.getMilliseconds())) - (new Date());
-      if (this._on)
-        this.switchAlarm();
-      this._timeout = window.setTimeout(this.fireAlarm.bind(this), parseInt(targetTime));
+
+      var targetTime = new Date(year, month, day, hour, minute + tMinute, second + tSecond, now.getMilliseconds());
+
+      if (!this._on)
+        return;
+
+      var req = navigator.mozAlarms.add(targetTime, "honorTimezone");
+      req.onsuccess = (function () {
+        this._alarmId = req.result;
+      }).bind(this);
     },
 
-    fireAlarm() {
-      alert('Alarm warning');
+    stopAlarm() {
+      navigator.mozAlarms.remove(this._alarmId);
+    },
+
+    alarmTrigger() {
+      var options = {
+        body: "Alarm Time Up"
+      }
+      this.switchAlarm();
+      var notification = new Notification("Alarm", options);
+      setTimeout(notification.close.bind(notification), 3000);
     }
 
   }
