@@ -3,13 +3,23 @@
   "description": "A Simple Clock Application",
   "launch_path": "/index.html",
   "icons": {
-    "16": "/icons/icon16x16.png",
-    "48": "/icons/icon48x48.png",
-    "60": "/icons/icon60x60.png",
-    "128": "/icons/icon128x128.png"
+    "16": "/icons/icon-16.png",
+    "48": "/icons/icon-48.png",
+    "60": "/icons/icon-60.png",
+    "128": "/icons/icon-128.png"
   },
   "developer": {
-    "name": "Your name",
-    "url": "http://example.com"
-  }
+    "name": "CrashedBboy",
+    "url": "http://crashedbboy.blogspot.tw"
+  },
+	"default_locale": "en",
+	"type": "privileged",
+	"permissions": {
+		"alarms": {
+			"description": "Needed for alert when time is up"
+		},
+		"desktop-notification": {
+			"description": "Prompt for Timer notification"
+		}
+	}
 }
