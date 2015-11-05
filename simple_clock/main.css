@@ -4,3 +4,15 @@
     background-color: grey;
     text-align: center;
 }
+
+.navbar-item:hover{
+    background-color: brown;
+}
+
+.navbar-item:active{
+    background-color: beige;
+}
+
+h2{
+    margin: 0;
+}

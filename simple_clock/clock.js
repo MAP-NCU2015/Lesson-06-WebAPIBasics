@@ -1,7 +1,6 @@
 (function (exports) {
 
   var Clock = function () {
-    this._time = null;
     this._wrapper = null;
     this._interval = null;
   }
@@ -11,7 +10,11 @@
     handleEvent(event) {
       switch (event.type) {
         case 'focusOnClock':
-          this.focusOnClock();
+          this.resetWrapper();
+          this.drawClock();
+          this.drawTime();
+          this.stopUpdate();
+          this._interval = window.setInterval((this.drawTime).bind(this), 100);
           break;
         case 'loseFocusOnClock':
           this.stopUpdate();
@@ -25,20 +28,30 @@
       window.addEventListener('loseFocusOnClock', this);
     },
 
-    updateClock() {
-      this.updateTime();
-      this.resetWrapper();
-      this.drawClock();
+    weekParser(week){
+      switch (week) {
+        case 0: return "Sunday";
+        case 1: return "Monday";
+        case 2: return "Tuesday";
+        case 3: return "Wednesday";
+        case 4: return "Thursday";
+        case 5: return "Friday";
+        case 6: return "Saturday";
+      }
     },
 
-    focusOnClock() {
-      this.updateClock();
-      this.stopUpdate();
-      this._interval = window.setInterval((this.updateClock).bind(this), 100);
-    },
+    drawTime() {
+      var date = new Date();
+      var yyyy = date.getFullYear().toString();
+      var MM = (date.getMonth() + 1).toString();
+      var dd = date.getDate().toString();
+      var hh = date.getHours().toString();
+      var mm = date.getMinutes().toString();
+      var ss = date.getSeconds().toString();
+      document.querySelector('#time').innerHTML = yyyy + "/" + MM + "/" + dd + " " + hh + ":" + mm + ":" + ss;
+      document.querySelector('#week').innerHTML = this.weekParser(date.getDay());
+      document.querySelector('#timezone').innerHTML = date.getTimezoneOffset() + " diff between UTC and local.";
 
-    updateTime() {
-      this._time = new Date();
     },
 
     resetWrapper(){
@@ -46,9 +59,17 @@
     },
 
     drawClock() {
-      var info = document.createElement('span');
-      info.textContent = this._time;
-      this._wrapper.appendChild(info);
+      var buff = document.createDocumentFragment();
+      var texts = [["Current Time", 'time'], ["Current Week", 'week'], ["Timezone", 'timezone']];
+      texts.forEach(function (element) {
+        var header = document.createElement('h2');
+        var content = document.createElement('span');
+        header.innerHTML = element[0];
+        content.id = element[1];
+        buff.appendChild(header);
+        buff.appendChild(content);
+      });
+      this._wrapper.appendChild(buff);
     },
 
     stopUpdate() {
