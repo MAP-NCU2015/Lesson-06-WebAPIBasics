@@ -1,26 +1,137 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-
-    <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
-
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
-    <script src="app.js" defer></script>
-
-  </head>
-
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
-
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width,user-scalable=no,initial-scale=1'>
+        <title>Simple Clock</title>
+        <link rel='stylesheet' href='style.css'>
+    </head>
+    <body>
+        <header>
+            <ul class='tabs'>
+                <li id='clock'> 
+                    時鐘 
+                </li>
+                <li id='stopwatch' class='enable'> 
+                    碼表 
+                </li>
+                <li id='timer'>
+                    倒數計時器
+                </li>
+                <li id='alarm'>
+                    鬧鐘
+                </li>
+                <li id='about'>
+                    關於作者 
+                </li>
+            </ul>
+        </header>
+        <section class="main">
+            <div id='clock'>
+                <div id='show'>
+                    <h3> Current Time </h3>
+                    <p id='current_time'>
+                        1970/01/01 08:00:00
+                    </p>
+                    <h3> Week </h3>
+                    <p id='week'>
+                        星期二
+                    </p>
+                    <h3> Timezone </h3>
+                    <p id='timezone'>
+                        GMT +0800
+                    </p>
+                </div>
+            </div>
+            <div id='stopwatch'>
+                <div id='show'>
+                    <div id='hour'>
+                        00
+                    </div>
+                    :
+                    <div id='minute'>
+                        00
+                    </div>
+                    .
+                    <div id='second'>
+                        00
+                    </div>
+                </div>
+                <button id='start'>
+                    start
+                </button>
+                <button id='stop'>
+                    stop
+                </button>
+                <button id='reset'>
+                    reset
+                </button>
+            </div>
+            <div id='timer'>
+            </div>
+            <div id='alarm'>
+            </div>
+            <div id='about'>
+                <ul>
+                    <li> 
+                        <h3> About: </h3>
+                        <ul>
+                            <img src='http://s.gravatar.com/avatar/c6249febef92173a8303e96ac7c53920?s=80'/>
+                            <li>
+                                作者 : rockwyc992
+                            </li>
+                            <li>
+                                E-Mail: 
+                                <a href='mailto://rockwyc992@gmail.com'>
+                                    rockwyc992@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href='https://plurk.com/rockwyc992'>
+                                    My Plurk
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3> Assignment </h3>
+                        <a href='https://github.com/MAP-NCU2015/Lesson-06-WebAPIBasics'> Spec </a>
+                    </li>
+                    <li> 
+                        <h3> Refence: </h3>
+                        <ul>
+                            <li>
+                                <a href='http://zespia.tw/blog/2012/01/21/jquery-tabs/'>
+                                    如何利用 jQuery 製作頁籤？
+                                </a>
+                            </li>
+                            <li>
+                                <a href='https://github.com/tastejs/todomvc/tree/gh-pages/examples/jquery'>
+                                    jQuery TodoMVC Example
+                                </a>
+                            </li>
+                            <li>
+                                <a href='https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs'>
+                                    Vanilla JavaScript TodoMVC Example
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer>
+        </footer>
+        <script src='js/jquery-2.1.4.min.js' defer></script>
+        <script src='js/app.js' defer></script>
+        <script src='js/Clock/Model.js' defer></script>
+        <script src='js/Clock/View.js' defer></script>
+        <script src='js/Clock/Controller.js' defer></script>
+        <script src='js/Stopwatch/Model.js' defer></script>
+        <script src='js/Stopwatch/View.js' defer></script>
+        <script src='js/Stopwatch/Controller.js' defer></script>
+    </body>
 </html>
+
+
+
