@@ -16,8 +16,68 @@
     <script src="scripts/app.js" defer></script>
   </head>
 
-  <body>
-    <h1>Hello World</h1>
+  <body data-theme="a" data-content-theme="a">
+		<div style="padding-bottom: 36px;" class="ui-page ui-page-footer-fixed ui-page-active ui-page-theme-undefined ui-page-theme-b" tabindex="0" data-url="testpage" data-role="page" id="testpage">
+			<div class="ui-panel-wrapper">
+				<div class="ui-header ui-bar-inherit" role="banner" data-role="header">
+					<h1 aria-level="1" role="heading" class="ui-title">Default theme</h1>
+					<a role="button" data-role="button" href="#" data-rel="back" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all">Back</a>
+					<a role="button" data-role="button" href="#" class="ui-btn-right ui-btn ui-icon-gear ui-btn-icon-left ui-shadow ui-corner-all">Button</a>
+					<div role="navigation" class="ui-navbar" data-role="navbar">
+						<ul class="ui-grid-b">
+							<li class="ui-block-a"><a href="#" class="ui-btn-active ui-state-persist ui-link ui-btn">Menu item 1</a></li>
+							<li class="ui-block-b"><a class="ui-link ui-btn" href="#">Menu item 2</a></li>
+							<li class="ui-block-c"><a class="ui-link ui-btn" href="#">Menu item 3</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="ui-content" role="main">
+					<form>
+						<div class="ui-field-contain">
+							<label for="name2">Text Input:</label>
+							<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear"><input name="name2" id="name2" value="" data-clear-btn="true" type="text"><a title="Clear text" href="#" tabindex="-1" aria-hidden="true" class="ui-input-clear ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all ui-input-clear-hidden">Clear text</a></div>
+						</div>
+						<div class="ui-field-contain">
+							<label id="slider2-label" for="slider2">Slider:</label>
+							<div class="ui-slider">
+								<input class="ui-shadow-inset ui-body-inherit ui-corner-all ui-slider-input" name="slider2" id="slider2" value="0" min="0" max="100" data-highlight="true" data-type="range" type="number">
+								<div class="ui-slider-track ui-shadow-inset ui-bar-inherit ui-corner-all" role="application">
+									<div style="width: 0%;" class="ui-slider-bg ui-btn-active"></div>
+									<a style="left: 0%;" aria-labelledby="slider2-label" title="0" aria-valuetext="0" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="slider" class="ui-slider-handle ui-btn ui-shadow" href="#"></a>
+								</div>
+							</div>
+						</div>
+						<div class="ui-field-contain">
+							<fieldset class="ui-controlgroup ui-controlgroup-vertical ui-corner-all" data-role="controlgroup">
+								<div role="heading" class="ui-controlgroup-label">
+									<legend>Checkbox:</legend>
+								</div>
+								<div class="ui-controlgroup-controls ">
+									<div class="ui-checkbox"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-off ui-first-child" for="checkbox-v-1a">One</label><input name="checkbox-v-1a" id="checkbox-v-1a" type="checkbox"></div>
+									<div class="ui-checkbox"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-off" for="checkbox-v-1b">Two</label><input name="checkbox-v-1b" id="checkbox-v-1b" type="checkbox"></div>
+									<div class="ui-checkbox"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-off ui-last-child" for="checkbox-v-1c">Three</label><input name="checkbox-v-1c" id="checkbox-v-1c" type="checkbox"></div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="ui-field-contain">
+							<fieldset class="ui-controlgroup ui-controlgroup-vertical ui-corner-all" data-role="controlgroup">
+								<div role="heading" class="ui-controlgroup-label">
+									<legend>Radio:</legend>
+								</div>
+								<div class="ui-controlgroup-controls ">
+									<div class="ui-radio"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-on ui-first-child" for="radio-v-1a">One</label><input name="radio-v-1" id="radio-v-1a" checked="" type="radio"></div>
+									<div class="ui-radio"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off" for="radio-v-1b">Two</label><input name="radio-v-1" id="radio-v-1b" type="radio"></div>
+									<div class="ui-radio"><label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off ui-last-child" for="radio-v-1c">Three</label><input name="radio-v-1" id="radio-v-1c" type="radio"></div>
+								</div>
+							</fieldset>
+						</div>
+					</form>
+					<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-gear ui-btn-icon-left ui-btn-active">Active button</a>
+				</div>
+			</div>
+			<!-- /header -->
+			<!-- /content -->
+		</div>
+		<!-- /page -->
   </body>
-
 </html>
