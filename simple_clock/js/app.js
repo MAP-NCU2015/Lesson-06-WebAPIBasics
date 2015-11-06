@@ -26,8 +26,9 @@ window.Tab_start = function() {
     });
 
     // set default tab
-    $('ul.tabs li').children().removeClass('enable').eq(1).addClass('enable');
-    $('section.main').children('div').hide().eq(1).show();
+    var default_tab = 3;
+    $('ul.tabs li').children().removeClass('enable').eq(default_tab).addClass('enable');
+    $('section.main').children('div').hide().eq(default_tab).show();
 }
 
 window.addEventListener("load", function() {
@@ -36,6 +37,10 @@ window.addEventListener("load", function() {
     Load_MVC('Clock');
     Load_MVC('Stopwatch');
     // Load_MVC('Timer');
+    var model = new Timer.Model();
+    var view = new Timer.View();
+    var controller = new Timer.Controller(model, view);
+    controller.start();
     // Load_MVC('Alarm');
 
     Tab_start();
