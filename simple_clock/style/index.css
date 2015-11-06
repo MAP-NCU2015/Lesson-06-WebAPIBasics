@@ -1,0 +1,18 @@
+body {
+	text-align: center;
+}
+
+#clock_year, #clock_month, #clock_date, #clock_hour, #clock_minute, #clock_second {
+	display: inline-block;
+	width: 31%;
+}
+
+#stop_minute, #stop_second {
+	display: inline-block;
+	width: 40%;
+}
+
+#stop_msecond {
+	display: inline-block;
+	width: 10%;
+}
