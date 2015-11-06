@@ -14,7 +14,6 @@
             var timezone = this.model.get_timezone();
             this.view.update(current_time, week, timezone);
         }.bind(this), 100);
-//        clearInterval(this.task);
     }
 
     // Export to window
