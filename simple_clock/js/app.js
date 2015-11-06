@@ -7,13 +7,11 @@ window.Load_MVC = function(name) {
             $( deferred.resolve );
         })
     ).done(function() {
-            var model;
-        var view;
-
-        model = new Clock.Model();
-        view = new Clock.View();
-        var clock = new Clock.Controller(model, view);
-        clock.start();
+        var str = 'var model = new ' + name + '.Model();'
+                + 'var view = new ' + name + '.View();'
+                + 'var controller = new ' + name + '.Controller(model, view);'
+                + 'controller.start();'
+        eval(str);
     }).fail(function() {
         console.log(name + 'MVC loading fail. ');
     });
