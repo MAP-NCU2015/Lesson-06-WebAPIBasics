@@ -8,19 +8,18 @@
 
 		start() {
 			this.run = true;
-			var tmp = this;
 			setInterval(this.update.bind(this), 1000);
 		},
 
 		setWrapper(timezone, week, year, month, date, hour, minute, second) {
-			this.timezone = timezone;
-			this.week = week;
-			this.year = year;
-			this.month = month;
-			this.date = date;
-			this.hour = hour;
-			this.minute = minute;
-			this.second = second;
+			this.timezoneWrapper = timezone;
+			this.weekWrapper = week;
+			this.yearWrapper = year;
+			this.monthWrapper = month;
+			this.dateWrapper = date;
+			this.hourWrapper = hour;
+			this.minuteWrapper = minute;
+			this.secondWrapper = second;
 		},
 
 		update() {
@@ -28,14 +27,14 @@
 				var now = new Date();
 				var timezone = now.getTimezoneOffset()/(-60);
 				timezone = timezone>0? "+"+timezone : timezone;
-				$("#" + this.timezone).text(timezone);
-				$("#" + this.week).text(now.getWeek());
-				$("#" + this.month).text(this.format(now.getMonth() + 1));
-				$("#" + this.year).text(now.getFullYear());	
-				$("#" + this.date).text(this.format(now.getDate()));
-				$("#" + this.hour).text(this.format(now.getHours()));
-				$("#" + this.minute).text(this.format(now.getMinutes()));
-				$("#" + this.second).text(this.format(now.getSeconds()));
+				$("#" + this.timezoneWrapper).text(timezone);
+				$("#" + this.weekWrapper).text(now.getWeek());
+				$("#" + this.monthWrapper).text(this.format(now.getMonth() + 1));
+				$("#" + this.yearWrapper).text(now.getFullYear());	
+				$("#" + this.dateWrapper).text(this.format(now.getDate()));
+				$("#" + this.hourWrapper).text(this.format(now.getHours()));
+				$("#" + this.minuteWrapper).text(this.format(now.getMinutes()));
+				$("#" + this.secondWrapper).text(this.format(now.getSeconds()));
 			}
 		},
 
