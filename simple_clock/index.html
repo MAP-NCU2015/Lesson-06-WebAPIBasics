@@ -4,23 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Simple Clock</title>
 
     <style>
-      body {
-        border: 1px solid black;
+      #title {
+        color: gray;
+      }
+      #date, #time {
+        color: red;
       }
     </style>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
-    <script src="app.js" defer></script>
+    <script src="main.js" defer></script>
+    <script src="clock.js" defer></script>
 
   </head>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <h1 id="title">Simple Clock</h1>
+    <h2 id="date"></h2>
+    <h2 id="time"></hw>
+    <h2 id="timer">00:00.00</h2>
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="reset">Reset</button>
   </body>
 
 </html>
