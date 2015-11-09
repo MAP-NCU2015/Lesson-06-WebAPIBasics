@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <title>Clock</title>
+        <meta name="description" content="A privileged app stub">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <section id="Clock">
+            <h1>Clock</h1>
+            <div class="show">
+                <span id="Date"></span>
+                <span id="UTC"></span>
+            </div>
+            <br><br>
+            <div class="show" id="Time"></div>
+        </section>
+        <section id="Count">
+            <h1>Timer</h1>
+            <div class="show">
+                <span id="timer"></span>
+            </div>
+            <div id="timerbtn">
+                <button id="start" onclick="startTimer()">開始</button>
+                <button id="pause" onclick="pause()">暫停</button>
+                <button id="zero" onclick="zero()">歸零</button>
+            </div>
+        </section>
+        <section id="Alarm">
 
-    <title>Hello World</title>
+        </section>
+    </body>
+    <footer>
+        <br><br><br><br>
+        <div id="pages">
+            <button id="toClock" onclick="startTictac();">Clock</button>
+            <button id="toCount" onclick="toTimer();">碼表</button>
+            <button id="toAlarm" onclick="startAlarm();">Alarm</button>
+        </div>
 
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
-
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
-    <script src="app.js" defer></script>
-
-  </head>
-
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
-
+        <link rel="stylesheet" href="css/app.css">
+        <script type="text/javascript" src="js/app.js" defer></script>
+        <script type="text/javascript" src="js/clock.js" defer></script>
+        <script type="text/javascript" src="js/timer.js" defer></script>
+        <script type="text/javascript" src="js/alarm.js" defer></script>
+        <link rel="prefetch" type="application/l10n" href="data/locales.ini" />
+        <script type="text/javascript" src="js/libs/l10n.js" defer></script>
+    </footer>
 </html>
