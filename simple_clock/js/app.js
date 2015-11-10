@@ -1,9 +1,21 @@
-window.addEventListener('DOMContentLoaded', function() {
-  'use strict';
-
-  //var translate = navigator.mozL10n.get;
-  navigator.mozL10n.once(startTictac);
-  var clock = new clock();
+/*Create clock object*/
+var clock = new clock();
+$(document).ready(function() {
   clock.startTictac();
 });
 
+/*Creat stopwatch object*/
+var stopwatch = new stopwatch();
+$('#start').click(function() {
+  stopwatch.startstopwatch();
+});
+
+$('#pause').click(function() {
+  stopwatch.pause();
+});
+
+$('#reset').click(function() {
+  stopwatch.reset();
+});
+
+/*Creat alarm object*/
