@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-
+    <link href="my.css" rel="stylesheet" type="text/css">
     <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
-
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
     <script src="app.js" defer></script>
+</head>
 
-  </head>
+<body>
+<div id="main">
+    <div id="time">000</div>
+    <div id="watch">
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>00:00:00</td>
+            </tr>
+            <tr>
+                <td style="vertical-align:top">
+                    <input class="button" type="button" value="開始">
+                    <input class="button" type="button" value="重設">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="alarm">
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>請設定鬧鐘時間</td>
+            </tr>
+            <tr>
+                <td><input type="time" id="timePicker"></td>
+            </tr>
+            <tr>
+                <td><input class="button" type="button" value="開啟鬧鐘">
+                    <input class="button" type="button" value="關閉鬧鐘">
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
+    </div>
+</div>
+</body>
 
 </html>
