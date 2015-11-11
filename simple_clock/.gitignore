@@ -1,0 +1,14 @@
+.DS_Store
+*.rej
+*.log
+*.orig
+*.pyc
+*.swp
+*.swn
+*.swo
+*.sln
+*.config
+.svn
+.vs
+*~
+node_modules/
