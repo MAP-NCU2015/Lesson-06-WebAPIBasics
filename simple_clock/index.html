@@ -9,6 +9,26 @@
     <style>
       body {
         border: 1px solid black;
+        text-align: center;
+      }
+      body > .container {
+        border-bottom: 1px dashed gray;
+      }
+      body > .container:last-child {
+        border: none;
+      }
+      #stopwatch-buttons {
+        display: flex;
+      }
+      #stopwatch-buttons div {
+        flex: 1;
+      }
+      .button {
+        background-color: #666;
+      }
+      .button:hover {
+        cursor: pointer;
+        background-color: gray;
       }
     </style>
 
@@ -16,17 +36,30 @@
          so we use a script file. -->
     <script src="js/moment.min.js" defer></script>
     <script src="js/clock.js" defer></script>
+    <script src="js/stopwatch.js" defer></script>
     <script src="app.js" defer></script>
 
   </head>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <div id="date"></div>
-    <div id="week"></div>
-    <div>
-      <span>GMT</span>
-      <span id="timezone"></span>
+    <div class="container">
+      <div id="date"></div>
+      <div id="week"></div>
+      <div>
+        <span>GMT</span>
+        <span id="timezone"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div id="stopwatch-time">
+          00:00:00
+      </div>
+      <div id="stopwatch-buttons">
+        <div id="stopwatch-start" class="button">START</div>
+        <div id="stopwatch-pause" class="button">PAUSE</div>
+        <div id="stopwatch-reset" class="button">RESET</div>
+      </div>
     </div>
   </body>
 
