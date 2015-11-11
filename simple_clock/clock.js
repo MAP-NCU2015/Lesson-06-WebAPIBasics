@@ -17,7 +17,7 @@
         this.hour = null;
         this.minute = null;
         this.setAlarmButton = null;
-    }
+    };
 
     Clock.prototype = {
         update() {
