@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-
+    <link href="my.css" rel="stylesheet" type="text/css">
     <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
-
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
     <script src="app.js" defer></script>
+</head>
 
-  </head>
+<body>
+<div id="main">
+    <div id="time"></div>
+    <div id="watch">
+        <table class="table">
+            <tbody>
+            <tr>
+                <td id="watchtime">00:00.00</td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="startpause" class="button" style="align-self: center">開始</button>
+                    <button id="reset" class="button">重設</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="alarm">
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>請設定鬧鐘時間(mm:ss)最多59:59</td>
+            </tr>
+            <tr>
+                <td>分:<input type="text" id="minute">秒:<input type="text" id="second"></td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="button" id="open">設定鬧鐘</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
+    </div>
+</div>
+</body>
 
 </html>
