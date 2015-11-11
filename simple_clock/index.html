@@ -24,7 +24,7 @@
 					<ul>
 						<li><a href="#clock" class="ui-btn-active" data-ajax="false">Clock</a></li>
 						<li><a href="#stop_watch" data-ajax="false">Stop Watch</a></li>
-						<li><a href="#alarm" data-ajax="false">Alerm</a></li>
+						<li><a href="#alarm" data-ajax="false">Alarm</a></li>
 					</ul>
 				</div>
 
@@ -49,12 +49,15 @@
 				<!-- Stop Watch Session-->
 				<div id="stop_watch" class="ui-content ui-body-d" role="main">
 					<div class="ui-grid-a">
-						<span id="stop_minute">19</span>:<span id="stop_second">02</span>.<span id="stop_msecond">1</span>
+						<span id="stop_minute">00</span>:<span id="stop_second">00</span>.<span id="stop_msecond">00</span>
 					</div>
-					<div class="ui-grid-b">
-							<div class="ui-block-a"><a id="stop_start" class="ui-btn ui-corner-all ui-btn-active">Start</a></div>
-							<div class="ui-block-b"><a id="stop_stop" class="ui-btn ui-corner-all">Stop</a></div>
-							<div class="ui-block-c"><a id="stop_reset" class="ui-btn ui-corner-all">Reset</a></div>
+					<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<a id="stop_start" class="ui-btn ui-corner-all ui-btn-active">Start</a>
+								<a id="stop_resume" class="ui-btn ui-corner-all ui-btn-active">Resume</a>
+								<a id="stop_pause" class="ui-btn ui-corner-all ui-btn-active">Pause</a>
+							</div>
+							<div class="ui-block-b"><a id="stop_reset" class="ui-btn ui-corner-all">Reset</a></div>
 					</div>
 				</div>
 
