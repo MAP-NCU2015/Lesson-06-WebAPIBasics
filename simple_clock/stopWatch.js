@@ -79,7 +79,7 @@
     drawStopWatch() {
       var buff = document.createDocumentFragment();
       var div = document.createElement('div');
-      var timer = document.createElement('span');
+      var timer = document.createElement('h2');
       var actions = ['start', 'stop', 'reset'];
 
       timer.id = 'time';
@@ -90,6 +90,7 @@
         var button = document.createElement('input');
         button.setAttribute('type', 'button');
         button.setAttribute('value', element);
+        button.className = 'myButton';
         button.onclick = function () {
           window.dispatchEvent(new CustomEvent('changeStopWatchState', { detail: element }));
         };

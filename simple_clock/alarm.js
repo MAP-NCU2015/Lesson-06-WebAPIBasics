@@ -38,7 +38,7 @@
       var param = [['Minute', 0, 59], ['Second', 0, 59]];
       param.forEach((function (element) {
         var input = document.createElement('input');
-        var label = document.createElement('span');
+        var label = document.createElement('h2');
         var br = document.createElement('br');
         label.innerHTML = element[0] + ':';
         input.id = element[0].toLowerCase();
@@ -58,6 +58,7 @@
       button.id = 'hint';
       button.setAttribute('type', 'button');
       button.value = 'Off';
+      button.className = 'myButton';
       button.onclick = (function () {
         this.switchAlarm();
       }).bind(this);
