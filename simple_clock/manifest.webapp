@@ -11,5 +11,17 @@
   "developer": {
     "name": "LuckyPig",
     "url": "web.cc.ncu.edu.tw/~102502549"
-  }
+  },
+  "permissions": {
+      "alarms": {
+        "description": "Required to schedule alarms"
+      },
+      "desktop-notification": {
+          "description": "Needed for creating system notifications."
+        }
+    },
+    "messages": [
+      { "alarm": "/index.html" },
+      {"notification": "path/to/your/index.html"}
+    ]
 }
