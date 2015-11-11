@@ -3,24 +3,75 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-
-    <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
-
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
-    <script src="app.js" defer></script>
-
+    <link rel="icon" type="image/png" href="icons/icon-128.png">
+    <title>Simple Clock</title>
+		<link rel="stylesheet" href="style/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="style/index.css" />
+		<script src="scripts/jquery-1.11.1.min.js"></script>
+		<script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+    <script src="scripts/clock.js" defer></script>
+    <script src="scripts/stopwatch.js" defer></script>
+    <script src="scripts/alarm.js" defer></script>
+    <script src="scripts/app.js" defer></script>
   </head>
 
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
+  <body data-theme="a" data-content-theme="a">
+		<div class="ui-page-theme-b" data-role="page">
+			<div data-role="tabs" id="tabs">
+				
+				<!-- Tab list in Navigation -->
+				<div role="navigation" class="ui-navbar" data-role="navbar">
+					<ul>
+						<li><a href="#clock" class="ui-btn-active" data-ajax="false">Clock</a></li>
+						<li><a href="#stop_watch" data-ajax="false">Stop Watch</a></li>
+						<li><a href="#alarm" data-ajax="false">Alarm</a></li>
+					</ul>
+				</div>
 
+				<!-- Clock Session-->
+				<div id="clock" class="ui-content ui-body-d" role="main">
+					<div class="ui-grid-a">
+							<div class="ui-block-a"><strong>UTC</strong><span id="clock_timezone"> +8</span></div>
+							<div class="ui-block-b"><strong>Week</strong><span id="clock_week"> 2</span></div>
+					</div>
+					<div class="ui-grid-solo">
+							<div class="ui-block-a">
+								<span id="clock_year">2015</span>/<span id="clock_month">11</span>/<span id="clock_date">02</span>
+							</div>
+					</div>
+					<div class="ui-grid-solo">
+							<div class="ui-block-a">
+								<span id="clock_hour">19</span>:<span id="clock_minute">02</span>:<span id="clock_second">29</span>
+							</div>
+					</div>
+				</div>
+
+				<!-- Stop Watch Session-->
+				<div id="stop_watch" class="ui-content ui-body-d" role="main">
+					<div class="ui-grid-a">
+						<span id="stop_minute">00</span>:<span id="stop_second">00</span>.<span id="stop_msecond">00</span>
+					</div>
+					<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<a id="stop_start" class="ui-btn ui-corner-all ui-btn-active">Start</a>
+								<a id="stop_resume" class="ui-btn ui-corner-all ui-btn-active">Resume</a>
+								<a id="stop_pause" class="ui-btn ui-corner-all ui-btn-active">Pause</a>
+							</div>
+							<div class="ui-block-b"><a id="stop_reset" class="ui-btn ui-corner-all">Reset</a></div>
+					</div>
+				</div>
+
+				<!-- Countdown Session-->
+				<div id="alarm" class="ui-content ui-body-d" role="main">
+					<form>
+							<label for="alarm_minute">Minute :</label>
+							<input id="alarm_minute" data-highlight="true" min="0" max="59" value="0" type="range">
+							<label for="alarm_second">Second :</label>
+							<input id="alarm_second" data-highlight="true" min="0" max="59" value="0" type="range">
+					</form>
+					<button id="alarm_start" href="#" class="ui-btn ui-corner-all ui-btn-active">Done</button>
+				</div>
+			</div>
+		</div>
+  </body>
 </html>
