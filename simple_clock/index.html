@@ -14,13 +14,20 @@
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
+    <script src="js/moment.min.js" defer></script>
+    <script src="js/clock.js" defer></script>
     <script src="app.js" defer></script>
 
   </head>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div id="date"></div>
+    <div id="week"></div>
+    <div>
+      <span>GMT</span>
+      <span id="timezone"></span>
+    </div>
   </body>
 
 </html>

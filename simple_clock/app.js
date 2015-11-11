@@ -1,3 +1,4 @@
 window.addEventListener("load", function() {
-  console.log("Hello World!");
+  var clockManager = new ClockManager();
+  clockManager.start();
 });
