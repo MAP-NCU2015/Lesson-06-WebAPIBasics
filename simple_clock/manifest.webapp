@@ -21,5 +21,9 @@
 		"desktop-notification": {
 			"description": "Prompt for Timer notification"
 		}
-	}
+	},
+	"messages": [
+		{"alarm": "/index.html"},
+		{"notification": "/index.html" }
+	]
 }
