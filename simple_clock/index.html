@@ -6,11 +6,7 @@
 
     <title>Hello World</title>
 
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
@@ -20,7 +16,14 @@
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div id="clockPage" class="page active">
+      <div id="timeLabel"></div>
+    </div>
+    <div id="timerPage" class="page"></div>
+    <div id="stopwatchPage" class="page"></div>
+    <span class="tab" data-tab-id="clock">clock</tab>
+    <span class="tab" data-tab-id="timer">timer</tab>
+    <span class="tab" data-tab-id="stopwatch">stopwatch</tab>
   </body>
 
 </html>
