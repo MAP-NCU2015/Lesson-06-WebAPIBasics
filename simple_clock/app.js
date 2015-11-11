@@ -1,3 +1,4 @@
+
 'use strict';
 
 (function(exports) {
@@ -195,3 +196,6 @@
     exports.Stopwatch = Stopwatch;
     exports.Alarm = Alarm;
 })(window);
+window.addEventListener("load", function() {
+  console.log("Hello World!");
+});
