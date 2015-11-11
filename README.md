@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Lesson-06-WebAPIBasics
 
 Please see the [slide](https://map-ncu2015.github.io/Lesson-06-WebAPIBasics/).
@@ -48,3 +49,7 @@ Cloned from https://github.com/mdn/to-do-notifications/tree/gh-pages .
 ### Emogotchi
 
 Cloned from https://github.com/mdn/emogotchi .
+=======
+# 20150925WebApp
+0925HW2
+>>>>>>> b123644d998d8eaebd5e950003941b9ea0cbef62
