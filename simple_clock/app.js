@@ -1,6 +1,22 @@
+function f(num) {
+  return num < 10 ? '0' + num : num;
+}
+
+function weeksInYear() {
+  var date = new Date();
+  date.setHours(0, 0, 0, 0);
+  date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+  var week1 = new Date(date.getFullYear(), 0, 4);
+  return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
+                        - 3 + (week1.getDay() + 6) % 7) / 7);
+}
+
 function updateClock(clockDOM, d) {
-  clockDOM.innerHTML = d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' +
-                       d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+  var tz = -(d.getTimezoneOffset() / 60);
+  var tzStr = tz < 0 ? 'GMT' + tz : 'GMT+' + tz;
+  clockDOM.innerHTML = d.getFullYear() + '/' + f(d.getMonth() + 1) + '/' + f(d.getDate()) + ' ' +
+                       f(d.getHours()) + ':' + f(d.getMinutes()) + ':' + f(d.getSeconds()) + ' ' +
+                       tzStr + ' (' + weeksInYear() + ' weeks)';
 }
 
 function updateWatch(watchDOM, counter) {
@@ -8,11 +24,7 @@ function updateWatch(watchDOM, counter) {
   var ss = Math.floor((counter / 100) % 60);
   var mm = Math.floor(counter / 100 / 60);
 
-  var msStr = ms < 10 ? '0' + ms : ms;
-  var ssStr = ss < 10 ? '0' + ss : ss;
-  var mmStr = mm < 10 ? '0' + mm : mm;
-
-  watchDOM.innerHTML = mmStr + ':' + ssStr + ':' + msStr;
+  watchDOM.innerHTML = f(mm) + ':' + f(ss) + ':' + f(ms);
 }
 
 var clockDOM = document.querySelector('#clock');
