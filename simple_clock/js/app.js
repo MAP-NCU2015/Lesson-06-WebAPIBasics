@@ -19,3 +19,7 @@ $('#reset').click(function() {
 });
 
 /*Creat alarm object*/
+var alarm = new alarm();
+$('#alarm_start').click(function(){
+  alarm.startAlarm();
+});

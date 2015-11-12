@@ -22,7 +22,7 @@ body {
 #UTC {
 
 }
-#Time, #timer {
+#Time, #timer, #alarm_time {
   text-align: center;
   color: orangered;//cadetblue;
   font-size: 60px;

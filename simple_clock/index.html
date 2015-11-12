@@ -42,13 +42,13 @@
 
         <!-- Stop Watch Session-->
         <section id="stopwatch" class="ui-content ui-body-b" role="main">
-            <h1>Timer</h1>
+            <h1>Stop Watch</h1>
             <div class="show">
                 <div id="timer" class="ui-grid-a">00:00:00</div>
             </div>
             <div id="timerbtn" class="ui-grid-b">
                 <div class="ui-block-a">
-                    <a id="start" class="ui-btn ui-corner-all ui-btn-active">Start</a>
+                    <a id="start" class="ui-btn ui-corner-all">Start</a>
                 </div>
                 <div class="ui-block-b">
                     <a id="pause" class="ui-btn ui-corner-all">Pause</a>
@@ -61,13 +61,19 @@
 
         <!-- Countdown Session-->
         <section id="alarm" class="ui-content ui-body-d" role="main">
+            <h1>Alarm</h1>
             <form>
-                <label for="alarm_minute">Minute :</label>
-                <input id="alarm_minute" data-highlight="true" min="0" max="59" value="0" type="range">
-                <label for="alarm_second">Second :</label>
-                <input id="alarm_second" data-highlight="true" min="0" max="59" value="0" type="range">
+                Next-to-do :
+                <input type="text" id="content" placeholder="Going to do."></input>
+                Minute :
+                <select id="alarm_minute" ></select>
+                Second :
+                <select id="alarm_second"></select>
             </form>
-            <a id="alarm_start" href="#" class="ui-btn ui-corner-all ui-btn-active">Done</a>
+            <button id="alarm_start" class="ui-btn ui-corner-all ui-btn-active">Start</button>
+            <div class="show">
+                <div id="alarm_time" class="ui-grid-a">00:00</div>
+            </div>
         </section>
 
 </body>
