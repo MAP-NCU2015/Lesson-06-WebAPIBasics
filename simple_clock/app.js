@@ -1,6 +1,21 @@
 window.addEventListener("load", function() {
   var intervalID = window.setInterval(updateTime, 1000);
   initStopWatch();
+  initAlarm();
+});
+
+function initAlarm() {
+  var startAlarmBtn = document.getElementById('start-alarm');
+  startAlarmBtn.onclick = function () {
+    var delay = document.getElementById('delay');
+    var date = new Date();
+    date.setSeconds(date.getSeconds() + +delay.value);
+    var alarm = navigator.mozAlarms.add(date, 'ignoreTimezone');
+  }
+}
+
+navigator.mozSetMessageHandler("alarm", function (alarm) {
+  new Notification("Alarm!!!!");
 });
 
 function updateTime() {
