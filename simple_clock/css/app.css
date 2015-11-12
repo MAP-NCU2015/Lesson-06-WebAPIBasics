@@ -1,0 +1,29 @@
+html, body {
+  margin: 0;
+  padding: 0.5rem;
+}
+
+body {
+  font-size: 1rem;
+  font-family: "Arial Black", "微軟正黑體";
+}
+
+#show {
+  text-align: center;
+  position: relative;
+  border-radius: 10px;
+  align-content: center;
+  color: orangered;//cadetblue;
+}
+
+#Date {
+  font-size: 28px;
+}
+#UTC {
+
+}
+#Time, #timer, #alarm_time {
+  text-align: center;
+  color: orangered;//cadetblue;
+  font-size: 60px;
+}
