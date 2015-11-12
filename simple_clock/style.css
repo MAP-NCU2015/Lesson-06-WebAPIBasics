@@ -1,3 +1,14 @@
+body, html{
+    margin: 0;
+}
+#wrapper{
+    padding: 1em;
+    margin-bottom: 72px;
+}
+.clearboth{
+    clear: both;
+    width: 100%;
+}
 .page{
     display: none;
     width: 100%;
@@ -6,6 +17,34 @@
 .active{
     display: block;
 }
+.bb-tablist{
+    text-align: center;
+    vertical-align: middle;
+}
 .tab{
     cursor: pointer;
+    line-height: 72px; /*no good, bob*/
+}
+#upperPanel{
+    width: 100%;
+}
+#datePanel{
+    width: 20%;
+    text-align: center;
+}
+.dateLabel{
+    line-height: 100%;
+}
+#clockLabel{
+    float: right;
+    width: 80%;
+    overflow: hidden;
+    font-weight: bold;
+    color: gray;
+    text-align: center;
+    line-height: 150%;
+}
+#timezoneLabel{
+    float: right;
+    clear: right;
 }

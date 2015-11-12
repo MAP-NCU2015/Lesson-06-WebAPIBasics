@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
@@ -7,23 +7,47 @@
     <title>Hello World</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="fonts.css" />
+    <link href="style/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="style/tabs.css" rel="stylesheet" type="text/css">
+    <link href="style/input_areas.css" rel="stylesheet" type="text/css">
 
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
     <script src="app.js" defer></script>
 
   </head>
 
   <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <div id="clockPage" class="page active">
-      <div id="timeLabel"></div>
+    <div id="wrapper">
+      <div id="upperPanel">
+	<div id="clockLabel">Time Loading...</div>
+	<i id="timezoneLabel">Timezone Loading...</i>
+	<div id="datePanel">
+	  <div id="yearLabel" class="dateLabel">Year Loading...</div>
+	  <div id="monthLabel" class="dateLabel">Month Loading...</div>
+	  <div id="dateLabel" class="dateLabel">Date Loading...</div>
+	  <div id="weekLabel" class="dateLabel">Week Loading...</div>
+	</div>
+      </div>
+      <div id="timerPage" class="page active">
+	<div id="timer">
+	  <fieldset>
+	    <input type="time" placeholder="New Timer..." />
+	  </fieldset>
+	</div>
+      </div>
+      <div class="clearboth"></div>
+      <div id="stopwatchPage" class="page">
+	
+      </div>
     </div>
-    <div id="timerPage" class="page"></div>
-    <div id="stopwatchPage" class="page"></div>
-    <span class="tab" data-tab-id="clock">clock</tab>
-    <span class="tab" data-tab-id="timer">timer</tab>
-    <span class="tab" data-tab-id="stopwatch">stopwatch</tab>
+    <ul role="tablist" class="bb-tablist">
+      <li class="tab" data-tab-id="timer">
+	<i class="fa fa-bell"></i> Clock
+      </li>
+      <li class="tab" data-tab-id="stopwatch">
+	<i class="fa fa-clock-o"></i> StopWatch
+      </li>
+    </ul>
   </body>
 
 </html>
