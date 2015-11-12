@@ -49,3 +49,16 @@ resetBtn.addEventListener('click', function (event) {
   counter = 0;
   updateWatch(watchDOM, counter);
 });
+
+var alarmBtn = document.querySelector('#alarm');
+
+alarmBtn.addEventListener('click', function (event) {
+  var afterInput = document.querySelector('#after');
+  var now = new Date();
+  now.setSeconds(now.getSeconds() + +afterInput.value);
+  var alarm = navigator.mozAlarms.add(now, 'ignoreTimezone');
+});
+
+navigator.mozSetMessageHandler("alarm", function (alarm) {
+  new Notification("Your task arrived");
+});
