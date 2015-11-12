@@ -6,11 +6,11 @@ window.addEventListener("load", function() {
 
 __init = function(){
 	//main clock
-	__mainClock = document.getElementById('main_clock');
-	__displayDate();
-	setInterval(__displayDate,100);
+	var mainClock = new MainClock();
+	mainClock.start();
 
 	//stop watch
+	/*
 	__running = false;
 	__stopWatchStartTime = -1;
 	__stopWatchPauseTime = 0;
@@ -23,19 +23,22 @@ __init = function(){
 	
 	__startButton.addEventListener("click",__onStartButtonClicked);
 	__pauseButton.addEventListener("click",__onPauseButtonClicked);
-	__resetButton.addEventListener("click",__onResetButtonClicked);
+	__resetButton.addEventListener("click",__onResetButtonClicked);*/
+	
+	var stopWatch = new StopWatch();
+	stopWatch.start();
 	
 	//alarm
-	__alarmPlayer = document.getElementById('alarm_player');
+	/*
 	__hour = document.getElementById('hour');
 	__minute = document.getElementById('minute');
-	for(i=0;i<24;i++){
+	for(var i=0;i<24;i++){
 		var temp = document.createElement("option");
 		temp.value = i;
 		temp.text = i;
 		__hour.add(temp);
 	}
-	for(i=0;i<60;i++){
+	for(var i=0;i<60;i++){
 		var temp = document.createElement("option");
 		temp.value = i;
 		temp.text = i;
@@ -55,7 +58,10 @@ __init = function(){
 		}
 		var n = new Notification("Alarm triggered",options);
 		setTimeout(n.close.bind(n), 4000); 
-	});
+	});*/
+	
+	var alarm = new Alarm();
+	alarm.start();
 	
 }
 
