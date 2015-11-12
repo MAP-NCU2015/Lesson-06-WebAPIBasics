@@ -133,21 +133,22 @@ alarm = function(){
 	this.minute = document.getElementById('minute');
 	for(var i=0;i<24;i++){
 		var temp = document.createElement("option");
+		temp.value = i;
+		this.hour.add(temp);
 		if (i < 10){
 			i = '0'+i;
 		}
-		temp.value = i;
 		temp.text = i;
-		this.hour.add(temp);
+
 	}
 	for(var i=0;i<60;i++){
 		var temp = document.createElement("option");
+		temp.value = i;
+		this.minute.add(temp);
 		if (i < 10){
 			i = '0'+i;
 		}
-		temp.value = i;
 		temp.text = i;
-		this.minute.add(temp);
 	}
 	this.hour.options[new Date().getHours()].selected = true;
 	this.minute.options[new Date().getMinutes()].selected = true;
