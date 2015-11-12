@@ -10,7 +10,8 @@
     <link rel="stylesheet" type="text/css" href="fonts.css" />
     <link href="style/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="style/tabs.css" rel="stylesheet" type="text/css">
-    <link href="style/input_areas.css" rel="stylesheet" type="text/css">
+    <link href="style/scrolling.css" rel="stylesheet" type="text/css">
+    <link href="style/buttons.css" rel="stylesheet" type="text/css">
 
     <script src="app.js" defer></script>
 
@@ -30,9 +31,9 @@
       </div>
       <div id="timerPage" class="page active">
 	<div id="timer">
-	  <fieldset>
-	    <input type="time" placeholder="New Timer..." />
-	  </fieldset>
+	  <select id="minuteSelector" class="timeSelector"></select>
+	  <select id="secondSelector" class="timeSelector"></select>
+	  <button id="addTimerBtn" class="recommend">Add</button>
 	</div>
       </div>
       <div class="clearboth"></div>

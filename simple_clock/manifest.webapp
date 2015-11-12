@@ -11,5 +11,14 @@
   "developer": {
     "name": "Your name",
     "url": "http://example.com"
-  }
+  },
+  "permissions": {
+    "alarms": {
+      "description": "Required to schedule alarms"
+    }
+  },
+    "messages": [
+      { "alarm": "/index.html" },
+      { "notification": "/index.html" }
+      ]
 }

@@ -48,3 +48,14 @@ body, html{
     float: right;
     clear: right;
 }
+#stopwatchPage, #timerPage{
+    border-top: gray 1px solid;
+    padding-top: 1em;
+}
+#timer{
+    text-align: center;
+}
+.timeSelector{
+    width: 45%;
+    text-align: center;
+}
