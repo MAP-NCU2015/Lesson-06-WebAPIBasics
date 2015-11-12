@@ -13,9 +13,12 @@
       }
       body > .container {
         border-bottom: 1px dashed gray;
+        padding-top: 20px;
+        padding-bottom: 20px;
       }
       body > .container:last-child {
         border: none;
+        padding: auto;
       }
       #stopwatch-buttons {
         display: flex;
@@ -29,6 +32,12 @@
       .button:hover {
         cursor: pointer;
         background-color: gray;
+      }
+      .button:active {
+        background-color: red;
+      }
+      #alarm-start {
+        margin-top: 10px;
       }
     </style>
 
