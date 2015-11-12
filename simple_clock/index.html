@@ -9,18 +9,81 @@
     <style>
       body {
         border: 1px solid black;
+        text-align: center;
+      }
+      body > .container {
+        border-bottom: 1px dashed gray;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      body > .container:last-child {
+        border: none;
+        padding: auto;
+      }
+      #stopwatch-buttons {
+        display: flex;
+      }
+      #stopwatch-buttons div {
+        flex: 1;
+      }
+      .button {
+        background-color: #666;
+      }
+      .button:hover {
+        cursor: pointer;
+        background-color: gray;
+      }
+      .button:active {
+        background-color: red;
+      }
+      #alarm-start {
+        margin-top: 10px;
       }
     </style>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
+    <script src="js/moment.min.js" defer></script>
+    <script src="js/clock.js" defer></script>
+    <script src="js/stopwatch.js" defer></script>
+    <script src="js/alarm.js" defer></script>
     <script src="app.js" defer></script>
 
   </head>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div class="container">
+      <div id="date"></div>
+      <div id="week"></div>
+      <div>
+        <span>GMT</span>
+        <span id="timezone"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div id="stopwatch-time">
+          00:00:00
+      </div>
+      <div id="stopwatch-buttons">
+        <div id="stopwatch-start" class="button">START</div>
+        <div id="stopwatch-pause" class="button">PAUSE</div>
+        <div id="stopwatch-reset" class="button">RESET</div>
+      </div>
+    </div>
+    <div class="container">
+      <div>
+        <div>
+          <label>MINUTES</label>
+          <input id="alarm-minute" type="number" min="0" max="59" value="0"/>
+        </div>
+        <div>
+          <label>SECONDS</label>
+          <input id="alarm-second" type="number" min="0" max="59" value="1"/>
+        </div>
+        <div id="alarm-start" class="button">START</div>
+      </div>
+    </div>
   </body>
 
 </html>
