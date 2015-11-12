@@ -6,12 +6,6 @@
 
     <title>Hello World</title>
 
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
-
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
     <script src="app.js" defer></script>
@@ -19,8 +13,12 @@
   </head>
 
   <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <h1>Clock: <span id="clock"></span></h1>
+
+    <h1>Stopwatch: <span id="stopwatch"></span></h1>
+    <button type="button" id="start">start</button>
+    <button type="button" id="pause">pause</button>
+    <button type="button" id="reset">reset</button>
   </body>
 
 </html>
