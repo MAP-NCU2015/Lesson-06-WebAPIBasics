@@ -1,26 +1,35 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-
-    <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
+    <title>alarm</title>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
     <script src="app.js" defer></script>
-
-  </head>
-
-  <body>
+</head>
+<body onload="showtime()">
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
 
+    <form name="CLOCK">
+        <p>現在時間:<input name="ALARM" type="TEXT" size="30"> </p>
+    </form>
+
+    <input type="button" value="開始" onclick="start()">
+    <input type="button" value="暂停" onclick="pause()">
+    <input type="button" value="停止" onclick="stop()">
+
+    <input name="showtime" id="showtime" type="text" value="00:0.00">
+
+    <p>
+        鬧鐘將在<input id="setmin" type="text" value="0" size="1">分
+        <input id="setsec" type="text" value="0" size="1">秒後 響起
+        <input type="button" value="設定" onclick="setalarm()">
+    </p>
+    <p id="alarmtime"></p>
+
+
+
+</body>
 </html>
