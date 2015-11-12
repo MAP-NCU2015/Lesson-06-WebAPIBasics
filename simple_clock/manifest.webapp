@@ -1,5 +1,5 @@
 {
-  "name": "simple_clock",
+  "name": "Clock",
   "description": "A Simple Clock Application",
   "launch_path": "/index.html",
   "icons": {
@@ -9,7 +9,19 @@
     "128": "/icons/icon128x128.png"
   },
   "developer": {
-    "name": "Your name",
-    "url": "http://example.com"
-  }
+    "name": "AzureNight",
+    "url": "https://github.com/star096374"
+  },
+  "permissions": {
+    "alarms": {
+      "description": "Required to schedule alarms"
+    },
+    "desktop-notification": {
+      "description": "Required to send notifications"
+    }
+  },
+  "messages": [
+    { "alarm": "/index.html" },
+    { "notification": "/index.html" }
+  ]
 }
