@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>simple clock</title>
 
     <style>
       body {
@@ -14,13 +14,22 @@
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
-    <script src="app.js" defer></script>
-
+    <script src="clock.js" defer></script>
+    <script src="main.js" defer></script>
+    <script src="timer.js" defer></script>
+    <script src="alarm.js" defer></script>
   </head>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <h1 id="date"></h1>
+    <h1 id="time"></h1>
+    <h1 id="timer">00:00.00</h1>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+    <button id="reset">RESET</button>
+
+
   </body>
 
 </html>
