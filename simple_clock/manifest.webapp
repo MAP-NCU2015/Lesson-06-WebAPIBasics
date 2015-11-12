@@ -2,6 +2,18 @@
   "name": "simple_clock",
   "description": "A Simple Clock Application",
   "launch_path": "/index.html",
+  "permissions": {
+    "alarms": {
+      "description": "Required to schedule alarms"
+    },
+    "desktop-notification": {
+      "description": "Display a notification on the user's desktop"
+    }
+  },
+  "messages": [
+    { "alarm": "/index.html" },
+    { "notification": "/index.html" }
+  ],
   "icons": {
     "16": "/icons/icon16x16.png",
     "48": "/icons/icon48x48.png",

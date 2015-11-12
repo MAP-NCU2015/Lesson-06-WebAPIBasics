@@ -8,4 +8,10 @@ window.addEventListener("load", function() {
     reset: 'stopwatch-reset'
   } );
   stopWatchManager.init();
+  var alarmManager = new AlarmManager( {
+    minute: 'alarm-minute',
+    second: 'alarm-second',
+    start:  'alarm-start'
+  } );
+  alarmManager.init();
 });
