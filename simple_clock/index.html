@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Clock, Stopwatch and Alarm!</title>
 
     <style>
       body {
@@ -14,13 +14,33 @@
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
+
     <script src="app.js" defer></script>
+    
+    
 
   </head>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <h1 id="main_date"></h1><br>
+    <h1 id="main_clock"></h1>
+    <hr>
+
+    <h1 id="stopwatch_list">碼表<br>00:00.00</h1><br> 
+    <button id="start_button">Start</button><br>
+    <button id="pause_button">Pause</button><br>
+    <button id="reset_button">Reset</button><br>
+    <hr>
+
+    <form id="alarm">
+    After
+      <select id="min" size="1">0</select>
+      min
+      <select id="sec" size="1">0</select>
+      sec will alarm!
+    </form>
+    <button id="set_alarm">set alarm</button><br>
   </body>
 
 </html>
