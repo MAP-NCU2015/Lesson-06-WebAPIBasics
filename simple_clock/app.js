@@ -23,14 +23,50 @@
     Clock.prototype = {
         showtime(){
             var now = new Date();
+            
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var date = now.getDate();
+            var day = now.getDay();
+            var timezone = now.getTimezoneOffset() / 60 * -1;
+            
             var hour = now.getHours();
             var minute = now.getMinutes();
             var second = now.getSeconds();
+            
+            switch(day) {
+                case 0:
+                day = 'Sunday';
+                break;
+                case 1:
+                day = 'Monday';
+                break;
+                case 2:
+                day = 'Tuesday';
+                break;
+                case 3:
+                day = 'Wednesday';
+                break;
+                case 4:
+                day = 'Thursday';
+                break;
+                case 5:
+                day = 'Friday';
+                break;
+                case 6:
+                day = 'Saturday';
+                break;
+            }
+            if(timezone >= 0) {
+                timezone = '+' + timezone;
+            }
     
-        var timeValue = (hour>= 12) ? "下午 " : "上午 "; // if condition ? true : false
-        timeValue += ((hour > 12) ? hour - 12 : hour) + " 點";
-        timeValue += ((minute < 10) ? " 0" : " ") + minute + " 分";
+        var timeValue = year + '/' + month + '/' + date + ' ' + day; 
+        timeValue += (hour>= 12) ? "下午 " : "上午 "; // if condition ? true : false
+        timeValue += ((hour > 12) ? hour - 12 : hour) + " 點:";
+        timeValue += ((minute < 10) ? " 0" : " ") + minute + " 分:";
         timeValue += ((second < 10) ? " 0" : " ") + second + " 秒";
+        timeValue += ' UTC' + timezone;
         clock.innerHTML = timeValue;
         }
         /*
