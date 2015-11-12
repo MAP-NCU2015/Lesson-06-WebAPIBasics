@@ -10,6 +10,26 @@
       body {
         border: 1px solid black;
       }
+
+      .btn {
+        background: #beeeee;
+        display: inline-block;
+        padding: 4px 6px 4px 6px;
+      }
+
+      .btn:hover {
+        background: #9ccccc;
+        cursor: pointer;
+      }
+
+      .btn:active {
+        background: #addddd;
+        cursor: pointer;
+      }
+
+      time {
+        display: block;
+      }
     </style>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
@@ -21,6 +41,19 @@
   <body>
     <!-- This code is in the public domain. Enjoy! -->
     <content></content>
+    <hr>
+    <stopwatch>
+      <time></time>
+      <div class="btn" id="start-btn">
+        Start
+      </div>
+      <div class="btn" id="pause-btn">
+        Pause
+      </div>
+      <div class="btn" id="reset-btn">
+        Reset
+      </div>
+    </stopwatch>
   </body>
 
 </html>

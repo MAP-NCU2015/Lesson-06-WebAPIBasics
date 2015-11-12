@@ -1,5 +1,6 @@
 window.addEventListener("load", function() {
   var intervalID = window.setInterval(updateTime, 1000);
+  initStopWatch();
 });
 
 function updateTime() {
@@ -46,3 +47,45 @@ Date.prototype.getWeekNumber = function(){
   d.setDate(d.getDate() + 4 - (d.getDay() || 7));
   return Math.ceil((((d - new Date(d.getFullYear(), 0, 1)) / 8.64e7) + 1) / 7);
 };
+
+
+function initStopWatch() {
+  var timeContent = document.querySelector('stopwatch time');
+  timeContent.innerHTML = '00:00.00';
+
+  // Setup event handler
+  var startBtn = document.getElementById('start-btn');
+  var resetBtn = document.getElementById('reset-btn');
+  var pauseBtn = document.getElementById('pause-btn');
+
+  var timeFlag = 0;
+  var intervalID = -1;
+
+  startBtn.onclick = function() {
+    console.log('startBtn click');
+    if (intervalID == -1){
+      intervalID = window.setInterval(function () {
+        timeFlag += 1;
+
+        var minute = Math.floor(timeFlag / 100 / 60);
+        var second = Math.floor(timeFlag / 100 % 60);
+        var ms = timeFlag % 100;
+        timeContent.innerHTML = pad(minute, 2) + ':' + pad(second, 2) + '.' + pad(ms, 2);
+      }, 10);
+    }
+  }
+
+  resetBtn.onclick = function() {
+    console.log('resetBtn click');
+    window.clearInterval(intervalID);
+    intervalID = -1;
+    timeFlag = 0;
+    timeContent.innerHTML = '00:00.00';
+  }
+
+  pauseBtn.onclick = function() {
+    console.log('pauseBtn click');
+    window.clearInterval(intervalID);
+    intervalID = -1;
+  }
+}
