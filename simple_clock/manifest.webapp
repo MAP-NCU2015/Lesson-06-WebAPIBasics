@@ -1,6 +1,6 @@
 {
-  "name": "simple_clock",
-  "description": "A Simple Clock Application",
+  "name": "clock",
+  "description": "A Hello World app",
   "launch_path": "/index.html",
   "icons": {
     "16": "/icons/icon16x16.png",

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <button onClick="myTimer = setInterval(myCounter, 10)">Start!</button>
+
+    <p id="demo">00:00.00</p>
+
+    <button onClick="clearInterval(myTimer)">Pause!</button>
+    
+    <button onClick="re = reset()">Reset</button>
+
+    <script>
+       var c = 0, s = 0, m = 0;
+       function myCounter() {
+          c++;
+          if(c==100)
+          {
+              s++;
+              c=0;
+          }
+           if(s==60)
+           {
+              m++;
+               s=0;
+           }
+           document.getElementById("demo").innerHTML = m + ":" + s + "." +c;
+       }
+        function reset()
+        {
+            s=0;
+            m=0;
+            c=0;
+            document.getElementById("demo").innerHTML = m + ":" + s + "." +c;
+        }
+    </script> 
+
+    <li><a href="index.html" title="back">back>></li>
+</body>
+</html>

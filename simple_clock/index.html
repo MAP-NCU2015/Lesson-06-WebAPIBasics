@@ -4,23 +4,61 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Digital Clock</title>
 
-    <style>
-      body {
-        border: 1px solid black;
+    <style>      
+      #clock {                        /* Style apply to element with id="clock" */
+       font: bold 24pt sans;         /* Use a big bold font */      
+      }
+      #clock1 {                        /* Style apply to element with id="clock" */
+       font: bold 12pt sans;         /* Use a big bold font */      
       }
     </style>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
     <script src="app.js" defer></script>
-
+    
+    <script>
+      function setup(){
+  if ((document.setform.sethour.value<0) || (document.setform.sethour.value>23))
+    alert("Hour設定超出範圍")
+  else if ((document.setform.setminute.value<0) || (document.setform.setminute.value>59))
+    alert("Minute設定超出範圍")
+  else 
+   {
+   if (document.setform.sethour.value!="")
+     shour=document.setform.sethour.value
+   if (document.setform.setminute.value!="")
+     sminute=document.setform.setminute.value
+   var alarmvalue = ""+((shour > 12) ? shour-12:shour)
+   alarmvalue +=((sminute < 10) ? ":0":":")+sminute+":00"
+   alarmvalue +=((shour > 12 ) ? " PM":" AM")
+   document.setform.atime.value = alarmvalue   
+   document.setform.sethour.value=""
+   document.setform.setminute.value=""
+   }
+}
+    </script>
+    
   </head>
 
   <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div align="center"><center>
+      <h1><span id="clock"></span></h1>  <!-- The time gets inserted here -->
+      <h1><span id="clock1"></span></h1>
+      </center></div>
+      
+      <li><a href="caltime.html" title="Stopwatch">Stopwatch</a></li>
+      <li><a href="alarm.html" title="Stopwatch">Alarm</a></li>
+    
+    鬧鐘時間<input type="text" size="11" name="atime" onfocus="blur()"> Alarm <input
+  type="radio" name="alarm">On <input type="radio" checked name="alarm">Off</p>
+  </center></div><hr>
+  <div align="center"><center><p>設定鬧鐘時間 : Hour <input type="text" size="2"
+  name="sethour"> Minute <input type="text" size="2" name="setminute"> <input type="button"
+  name="button1" value="Set" onclick="setup()"><br>
+    
   </body>
 
 </html>

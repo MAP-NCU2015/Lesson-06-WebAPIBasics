@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    
+        <p id="demo">00:00</p>
+  
+        <h1>設定鬧鐘時間 : </h1>  
+        Hour <input type="text" size="3" name="sethour"> <br>
+        Minute <input type="text" size="3" name="setminute"> <br>
+    
+    
+        
+  
+  <button onClick="re = reset()">Reset</button>
+
+    <script>
+       
+        function reset()
+        {
+          //var num1Str = document.setform.sethour.value;
+          //var num2Str = document.setform.setminute.value;
+          if (!isNumber(document.setform.setminute.value) || !isNumber(document.setform.setminute.value))
+	        {
+            alert("Some of the input is not a number!");
+          }
+	        /*else
+	        {
+		        if ((document.setform.sethour.value<0) || (document.setform.sethour.value>23))
+    	        alert("Hour設定超出範圍");
+  	        else if ((document.setform.setminute.value<0) || (document.setform.setminute.value>59))
+    	        alert("Minute設定超出範圍");
+            else 
+   	        {
+   		        if (document.setform.sethour.value!="")
+     		       shour=document.setform.sethour.value;
+          		if (document.setform.setminute.value!="")
+     	        	sminute=document.setform.setminute.value;
+           		var alarmvalue = ""+((shour > 12) ? shour-12:shour);
+   		        alarmvalue +=((sminute < 10) ? ":0":":")+sminute+":00";
+   		        alarmvalue +=((shour > 12 ) ? " PM":" AM");
+   		        document.setform.atime.value = alarmvalue;
+   		        document.setform.sethour.value="";
+   		        document.setform.setminute.value="";
+  	         }	          
+          }*/
+          document.getElementById("demo").innerHTML ="123";
+        }
+    </script> 
+    
+    
+    <script>
+      
+    function setup(){
+	/*var num1Str = document.setform.sethour.value;
+  var num2Str = document.setform.setminute.value;
+  if (!isNumber(num1Str) || !isNumber(num2Str))
+	{
+    alert("Some of the input is not a number!");
+  }
+	else
+	{
+		if ((document.setform.sethour.value<0) || (document.setform.sethour.value>23))
+    	alert("Hour設定超出範圍");
+  	else if ((document.setform.setminute.value<0) || (document.setform.setminute.value>59))
+    	alert("Minute設定超出範圍");
+  	else 
+   	{
+   		if (document.setform.sethour.value!="")
+     		shour=document.setform.sethour.value;
+   		if (document.setform.setminute.value!="")
+     		sminute=document.setform.setminute.value;
+   		var alarmvalue = ""+((shour > 12) ? shour-12:shour);
+   		alarmvalue +=((sminute < 10) ? ":0":":")+sminute+":00";
+   		alarmvalue +=((shour > 12 ) ? " PM":" AM");
+   		document.setform.atime.value = alarmvalue;
+   		document.setform.sethour.value="";
+   		document.setform.setminute.value="";
+  	}	*/
+      alert("Minute設定超出範圍");
+	}
+}
+    
+    </script> 
+
+    <li><a href="index.html" title="back">back>></li>
+</body>
+</html>
