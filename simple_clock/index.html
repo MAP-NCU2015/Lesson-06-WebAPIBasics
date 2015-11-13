@@ -4,23 +4,65 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>simple clock</title>
 
     <style>
-      body {
-        border: 1px solid black;
-      }
+        #sitebody {
+          width:600px;
+          margin:0 auto;
+          font-size:13px;
+        }
+        #header {
+          height:160px;
+          text-align:center;
+          line-height:80px;
+        }
+        #bodyleft {
+          height:200px;
+          text-align:center;
+          line-height:20px;
+          float:left;
+        }
+        #bodyright {
+          height:200px;
+          text-align:center;
+          line-height:20px;
+          float:right;
+        }
     </style>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
-    <script src="app.js" defer></script>
-
+    <script src="clock.js" defer></script>
+    <script src="main.js" defer></script>
+    <script src="timer.js" defer></script>
+    <script src="alarm.js" defer></script>
+    
   </head>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div id="sitebody">
+      <div id="header">
+        <h1 id="date"></h1>
+        <h1 id="time"></h1>
+      </div>
+      <div id="bodyleft">
+        <h1 id="timer">00:00.00</h1>
+        <button id="start">START</button>
+        <button id="stop">STOP</button>
+        <button id="reset">RESET</button>
+      </div>
+      <div id="bodyright">
+        <h1>min</h1>
+        <select id="minute"></select>
+        <h1>sec</h1>
+        <select id="sec"></select>
+        <button id="set">SET</button>
+        <h1 id="test"></h1>
+      </div>
+    </div>
+
   </body>
 
 </html>
