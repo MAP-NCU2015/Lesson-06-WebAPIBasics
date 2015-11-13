@@ -18,18 +18,22 @@ require.config({
         Tab: 'Tab',
         Clock_main: 'Clock/main',
         Stopwatch_main: 'Stopwatch/main',
-        Timer_main: 'Timer/main'
+        Timer_main: 'Timer/main',
+        Install: 'Install'
     }
 });
 
-require(['jquery', 'Tab', 'Clock_main', 'Stopwatch_main', 'Timer_main'], function($, Tab, Clock, Stopwatch, Timer) {
+require(['jquery'], function($) {
     console.log("Hello, this is a simple clock.");
-
-    Clock.start();
-    Stopwatch.start();
-    Timer.start();
-
-    Tab.start();
-    Tab.set_tab(2);
+    require(['Tab', 'Install'], function(Tab, Install) {
+        Tab.start();
+        Tab.set_tab(0);
+        Install.start();
+        require(['Clock_main', 'Stopwatch_main', 'Timer_main'], function(Clock, Stopwatch, Timer) {
+            Clock.start();
+            Stopwatch.start();
+            Timer.start();
+        });
+    });
 });
 
