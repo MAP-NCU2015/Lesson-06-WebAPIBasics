@@ -58,13 +58,9 @@ StopWatch = function(){
     this.millisec = 0;
 	isRunning = false;
 	stopWatch = document.getElementById('StopWatch');
-	
-	if(millisec=="0"||millisec=="1"||millisec=="2"||millisec=="3"||millisec=="4"||millisec=="5"||millisec=="6"||millisec=="7"||millisec=="8"||millisec=="9")
-        millisec = "0" + millisec;
-    if(sec=="0"||sec=="1"||sec=="2"||sec=="3"||sec=="4"||sec=="5"||sec=="6"||sec=="7"||sec=="8"||sec=="9")
-        sec = "0" + sec;
-    if(min=="0"||min=="1"||min=="2"||min=="3"||min=="4"||min=="5"||min=="6"||min=="7"||min=="8"||min=="9")
-        min = "0" + min;	
+    millisec = "0" + millisec;
+    sec = "0" + sec;
+    min = "0" + min;	
 	var displayString = min +":"+sec +"."+millisec ;
 	stopWatch.textContent = displayString;
 	
@@ -117,12 +113,9 @@ ResetClicked = function(){
     millisec = 0;
 	clearInterval(timer);
 	isRunning = false;
-	if(millisec=="0"||millisec=="1"||millisec=="2"||millisec=="3"||millisec=="4"||millisec=="5"||millisec=="6"||millisec=="7"||millisec=="8"||millisec=="9")
-        millisec = "0" + millisec;
-    if(sec=="0"||sec=="1"||sec=="2"||sec=="3"||sec=="4"||sec=="5"||sec=="6"||sec=="7"||sec=="8"||sec=="9")
-        sec = "0" + sec;
-    if(min=="0"||min=="1"||min=="2"||min=="3"||min=="4"||min=="5"||min=="6"||min=="7"||min=="8"||min=="9")
-        min = "0" + min;	
+    millisec = "0" + millisec;
+    sec = "0" + sec;
+    min = "0" + min;
 	var displayString = min +":"+sec +"."+millisec ;
 	stopWatch.textContent = displayString;
 }
