@@ -1,0 +1,92 @@
+body {
+    background: black;
+    color: white;
+    font-size: 1.5em;
+    padding: 5px 20px
+}
+
+body h3 {
+    font-size: larger;
+}
+
+ul.tabs li {
+    background: #ddd;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    color: #999;
+    cursor: pointer;
+}
+
+ul.tabs li:hover {
+    color: #666;
+}
+
+ul.tabs li.enable {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: -1px;
+    color: #333;
+}
+
+button {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    color: #333;
+    font-size: 0.7em;
+}
+
+section.main {
+    background: #ddd;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 16px #ccc;
+    color: black;
+}
+
+section.main > div {
+    display: none;
+    text-align: justify;
+    padding: 10px 15px;
+}
+
+section.main > div:first-of-type {
+    display: block;
+}
+
+
+section.main #clock #show > p {
+    margin-bottom: 2em;
+}
+
+section.main #stopwatch #show > div {
+    border: 1px solid #333;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    color: #333;
+}
+
+section.main #timer #show > div {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
+section.main #timer #show > div > select {
+    border: 1px solid #333;
+    padding: 5px 10px;
+    color: #333;
+    font-size: 1em;
+}
+
+section.main #about > ul > li {
+    margin-bottom: 0.7em;
+}
+
+footer button#install {
+    float: right;
+    margin-right: 100px;
+}
