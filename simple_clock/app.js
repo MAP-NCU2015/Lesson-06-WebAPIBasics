@@ -14,7 +14,7 @@ function Clock(){
     //TODO: make Timer a independent class.
 }
 Clock.prototype = {
-    updateDate: (clock, clockLabel, yearLabel, monthLabel, dateLabel, weekLabel, timezoneLabel) => {
+    updateDate: function(clock, clockLabel, yearLabel, monthLabel, dateLabel, weekLabel, timezoneLabel){
 	date = new Date();
 	clockLabel.innerHTML = (date.getHours() < 10 ? "0":"") + date.getHours() + ":" +
 	    (date.getMinutes() < 10 ? "0":"") + date.getMinutes() + ":" +
@@ -25,22 +25,25 @@ Clock.prototype = {
 	weekLabel.innerHTML = clock.weekDayNames[date.getDay()];
 	timezoneLabel.innerHTML = "UTC" + (date.getTimezoneOffset() < 0 ? "+":"") + (date.getTimezoneOffset()/-60);
     },
-    updateFontSize: () => {
-	this.clockLabel.style.fontSize = (window.screen.width / 6) + "px";
-	this.yearLabel.style.fontSize = (window.screen.width / 16) + "px";
-	this.monthLabel.style.fontSize = (window.screen.width / 30) + "px";
-	this.dateLabel.style.fontSize = (window.screen.width / 8) + "px";
-	this.weekLabel.style.fontSize = (window.screen.width / 30) + "px";
-	this.timezoneLabel.style.fontSize = (window.screen.width / 30) + "px";
+    updateFontSize: function(){
+	this.clockLabel.style.fontSize = (window.innerWidth / 6) + "px";
+	this.yearLabel.style.fontSize = (window.innerWidth / 16) + "px";
+	this.monthLabel.style.fontSize = (window.innerWidth / 30) + "px";
+	this.dateLabel.style.fontSize = (window.innerWidth / 8) + "px";
+	this.weekLabel.style.fontSize = (window.innerWidth / 30) + "px";
+	this.timezoneLabel.style.fontSize = (window.innerWidth / 30) + "px";
+	for(log of document.querySelectorAll("#stopwatchLogs li")){
+	    log.style.fontSize = (window.innerWidth / 8) + "px";
+	}
 	document.querySelector("#stopwatchLabel").style.fontSize = (window.screen.width / 8) + "px";
     },
-    initTimerSelector: (minuteSelector, secondSelector) => {
+    initTimerSelector: function(minuteSelector, secondSelector){
 	for(var i = 0; i < 60; i++){
 	    minuteSelector.innerHTML += "<option>"+i+"</option>\n";
 	    secondSelector.innerHTML += "<option>"+i+"</option>\n";
 	};
     },
-    addTimer: (minuteSelector, secondSelector) => {
+    addTimer: function(minuteSelector, secondSelector){
 	console.log("Add timer: "+minuteSelector.value+":"+secondSelector.value);
 	var date = new Date(Date.now() + 60000*minuteSelector.value + 1000*secondSelector.value);
 	var data = {
@@ -55,7 +58,7 @@ Clock.prototype = {
 function Stopwatch(){
     this.stopwatchTime = 0;
     this.startTime = 0;
-    this.stopwatchLogs = {};
+    this.stopwatchLogs = document.querySelector("#stopwatchLogs");
     this.stopwatchStopwatchLabel;
     this.stopwatchLabel = document.querySelector("#stopwatchLabel");
     this.stopwatchUpdateProccess = null;
@@ -82,12 +85,17 @@ Stopwatch.prototype = {
 	    this.isPause = true;
 	}
     },
-    log: function(){},
+    split: function(updateFontSize){
+	this.stopwatchLogs.innerHTML += "<li>" + this.stopwatchLabel.innerHTML + "</li>";
+	updateFontSize();
+	window.scroll(0,document.body.clientHeight);
+    },
     reset: function(){
 	this.startTime = 0;
 	this.stopwatchLabel.innerHTML = "0:00.000";
 	this.stoppingToolbar.classList.add("active");
 	this.clockingToolbar.classList.remove("active");
+	this.stopwatchLogs.innerHTML = "";
 	window.clearInterval(this.stopwatchUpdateProccess);
     },
     updateDate: function(stopwatchLabel, stopwatch){
@@ -117,6 +125,8 @@ window.addEventListener("load", function() {
 	    this.stopwatch.pause();
 	}else if(event.target.id == "resetStopWatch"){
 	    this.stopwatch.reset();
+	}else if(event.target.id == "splitStopWatch"){
+	    this.stopwatch.split(clock.updateFontSize);
 	}
     }.bind(clock));
     window.onresize = clock.updateFontSize();
