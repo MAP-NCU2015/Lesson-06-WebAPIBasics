@@ -87,7 +87,3 @@
     };
     exports.Stopwatch = Stopwatch;
 })(window);
-document.addEventListener('DOMContentLoaded', function (event) {
-    var stopwatch = new Stopwatch();
-    stopwatch.start();
-});

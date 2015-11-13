@@ -82,7 +82,3 @@
     };
     exports.Countdown = Countdown;
 })(window);
-document.addEventListener('DOMContentLoaded', function (event) {
-    var countdown = new Countdown();
-    countdown.start();
-});
