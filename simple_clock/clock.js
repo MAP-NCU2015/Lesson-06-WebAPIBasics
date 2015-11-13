@@ -6,32 +6,32 @@
   };
 
   ClockManager.prototype = {
+    check(a) {
+      if(a < 10) {
+        a = '0' + a;
+        return a;
+      } else return a;
+    },
     start() {
       var now,year,month,day,hour,minute,second,week,zone;
-      var map = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-      now = new Date();
-      year = now.getFullYear();
-      month = now.getMonth()+1;
-      day = now.getDate();
-      hour = now.getHours();
-      minute = now.getMinutes();
-      second = now.getSeconds();
-      week = map[now.getDay()];
-      zone = now.getTimezoneOffset()/(-60)
-      if(second < 10) {
-        second = '0' + second;
-      }
-      if(minute < 10) {
-        minute = '0' + minute;
-      }
-      if(hour < 10) {
-        hour = '0' + hour;
-      }
-      if(zone >= 0) {
-        zone = '+'+zone;
-      }
-      document.getElementById('date').innerHTML = year+'/'+month+'/'+day+" UTC"+zone;
-      document.getElementById('time').innerHTML = hour+':'+minute+':'+second+' '+week;
+      var map = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      window.setInterval((function() {
+        now = new Date();
+        this.year = now.getFullYear();
+        this.month = now.getMonth()+1;
+        this.day = now.getDate();
+        this.hour = now.getHours();
+        this.minute = now.getMinutes();
+        this.second = now.getSeconds();
+        this.week = map[now.getDay()];
+        //console.log(now.getDay());
+        this.zone = now.getTimezoneOffset()/(-60)
+        if(this.zone >= 0) {
+          this.zone = '+'+this.zone;
+        }
+        document.getElementById('date').innerHTML = this.year+'/'+this.check(this.month)+'/'+this.check(this.day)+" UTC"+(this.zone);
+        document.getElementById('time').innerHTML = this.check(this.hour)+':'+this.check(this.minute)+':'+this.check(this.second)+' '+this.week;
+      }).bind(this),1000)
     }
   };
 

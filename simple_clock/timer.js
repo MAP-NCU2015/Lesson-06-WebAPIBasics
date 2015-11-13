@@ -5,8 +5,8 @@
     this.msec = 0;
     this.sec = 0;
     this.min = 0;
-    this.already = null; //prevent the user from clicking many times
-  }
+    this.already = null; //prevent the user from clicking many times if
+  }                      //he is already started
 
   TimerManager.prototype = {
     init() {
@@ -19,8 +19,7 @@
       if(a < 10) {
         a = '0' + a;
         return a;
-      }
-      else return a;
+      } else return a;
     },
     start() {
       if(this.already == null) {
