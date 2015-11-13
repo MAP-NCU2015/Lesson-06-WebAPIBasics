@@ -4,14 +4,16 @@
     <meta charset="utf-8">
     <title>Clock app</title>
     <script src="js/main.js"></script>
-    <script src="js/clock.js"></script>
+    <script src="js/countdown.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
-    <div>
-        <p style="text-align:center" id="time_display"></p>
-        <p style="text-align:center" id="week_display"></p>
-        <p style="text-align:center" id="timezone_display"></p>
+    <div style="margin-left:20%">
+        <form>
+            <select style="font-size:100%" id="minute" name="minute"></select>分
+            <select style="font-size:100%" id="second" name="second"></select>秒
+        </form>
+        <button style="margin-top:10%;width:70%;height:200px;font-size:100%" id="start" class="start">倒數開始</button>
     </div>
     <ul class="button_tab">
         <li>
