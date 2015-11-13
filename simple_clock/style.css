@@ -29,6 +29,13 @@ ul.tabs li.enable {
     color: #333;
 }
 
+button {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    color: #333;
+    font-size: 0.7em;
+}
 
 section.main {
     background: #ddd;
@@ -56,8 +63,22 @@ section.main #stopwatch #show > div {
     border: 1px solid #333;
     display: inline-block;
     margin-right: 5px;
+    margin-bottom: 20px;
     padding: 5px 10px;
     color: #333;
+}
+
+section.main #timer #show > div {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
+section.main #timer #show > div > select {
+    border: 1px solid #333;
+    padding: 5px 10px;
+    color: #333;
+    font-size: 1em;
 }
 
 section.main #about > ul > li {
