@@ -1,20 +1,20 @@
 'use strict';
 (function(exports){
-    var clock = function () {
-        console.log('Clock!');
-    }
-
-    clock.prototype = {
-        startclock() {
-            this.clocktime();
-            this.interval = setInterval(this.clocktime.bind(this), 1000); //每x毫秒執行一次
-        },
-
-        clocktime() {
-            var now = new Date();
-            var day = now.getDay();
-            switch (day) {
-                case 1:
+	var clock = function(){
+		
+	}
+	
+	clock.prototype = {
+		startclock(){
+			this.datetime();
+			setInterval(this.datetime.bind(this),1000);
+		},
+		
+		datetime(){
+			var now = new Date();
+			var day = now.getDay();
+			switch(day){
+				case 1:
                     day = '(一)';break;
                 case 2:
                     day = '(二)';break;
@@ -31,19 +31,18 @@
                 default:
                     break;
             }
-
-        $('#Date').text(now.getFullYear() + "/" + this.modify(now.getMonth()+1) + "/" + this.modify(now.getDate()) + " " +day);
-        $('#UTC').text("UTC:" + now.getTimezoneOffset()/-60);
-        $('#Time').text(this.modify(now.getHours()) + ":" + this.modify(now.getMinutes()) + ":" + this.modify(now.getSeconds()));
-
-        },
-
-        modify(num) {
-        var n = num;
-            return n < 10? "0"+ n : n;
-        }
-
-    };
-
-    exports.clock = clock;
+		
+		$('#Date').text(this.modify(now.getMonth()+1) + "/" + this.modify(now.getDate()) + "/" + now.getFullYear() + " " + day);
+		$('#UTC').text("UTC:" + now.getTimezoneOffset()/-60);
+		$('#Time').text(this.modify(now.getHours()) + ":" + this.modify(now.getMinutes()) + ":" + this.modify(now.getSeconds()));
+		
+		},
+		
+		modify(num){
+			return num < 10? "0"+ num : num;
+		}
+		
+	};
+	
+	exports.clock = clock;
 })(window);
