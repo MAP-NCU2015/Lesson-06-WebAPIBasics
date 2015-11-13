@@ -45,26 +45,14 @@ Clock.prototype = {
     },
     addTimer: function(minuteSelector, secondSelector){
 	//check support for desktop browser
-	if ("Notification" in window) {
-	    if(Notification.permission == "granted"){
-		var date = new Date(Date.now() + 60000*minuteSelector.value + 1000*secondSelector.value);
-		var data = {
-		    date: date
-		}
-		var alarm = window.navigator.mozAlarms.add(date, "ignoreTimezone", data);
-		alarm.onerror = function(){
-		    console.log("error");
-		}
-	    }else{
-		Notification.requestPermission(function(){
-		    if(Notification.permission == "granted"){
-			this.addTimer(minuteSelector, secondSelector);
-		    }
-		});
-	    };
-	}else{
-	    alert("Sorry, we can not active Notification");
-	};	
+	var date = new Date(Date.now() + 60000*minuteSelector.value + 1000*secondSelector.value);
+	var data = {
+	    date: date
+	}
+	var alarm = window.navigator.mozAlarms.add(date, "ignoreTimezone", data);
+	alarm.onerror = function(){
+	    console.log("error");
+	}
     }
 };
 function Stopwatch(){
@@ -149,5 +137,6 @@ navigator.mozSetMessageHandler("alarm", function (mozAlarm) {
 	body: "Your tea is done, drink it when it still hot!"
     };
     var notification = new Notification("Time up!", options);
+    setTimeout(notification.close().bind(notification), 30000);
 });
 
