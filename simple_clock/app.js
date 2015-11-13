@@ -1,6 +1,6 @@
 
 var timestart, m = 0, s = 0, ss = 1;
-
+var mode = 0;
 function second() {
     if ((ss % 100) == 0) {
         s += 1;
@@ -17,11 +17,17 @@ function second() {
 }
 
 function start() {
-    timestart = setInterval("second()", 10);
+    if (mode === 0 || mode === 2) {
+        timestart = setInterval("second()", 10);
+        console.log(1);
+    }
+    mode = 1;
 }
 
 function pause() {
-    clearInterval(timestart);
+    if(mode ===1)
+        clearInterval(timestart);
+    mode = 2;
 }
 
 function stop() {
@@ -29,6 +35,7 @@ function stop() {
     ss = 0;
     m = s = 0;
     document.getElementById("showtime").value = m + ":" + s + "." + ss;
+    mode = 0;
 }
 
 function showtime() {
