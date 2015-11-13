@@ -77,6 +77,17 @@ html{
 #timer{
     text-align: center;
 }
+.timeSelectorLabel{
+    width:45%;
+    text-align: left;
+    float: left;
+    font-size: small;
+    color: gray;
+}
+.timeSelectorLabel:first-of-type{
+    -moz-padding-start:1.1rem;
+
+}
 .timeSelector{
     width: 45%;
     text-align: center;

@@ -33,9 +33,15 @@
       <div class="clearboth"></div>
       <div id="timerPage" class="page active">
 	<div id="timer">
-	  <select id="minuteSelector" class="timeSelector"></select>
-	  <select id="secondSelector" class="timeSelector"></select>
-	  <button id="addTimerBtn" class="recommend">Add</button>
+	  <div class="clearboth">
+	    <div class="timeSelectorLabel">Minutes</div>
+	    <div class="timeSelectorLabel">Seconds</div>
+	  </div>
+	  <div class="clearboth">
+	    <select id="minuteSelector" class="timeSelector" placeholder="min"></select>
+	    <select id="secondSelector" class="timeSelector" placeholder="sec"></select>
+	  </div>
+	  <button id="addTimerBtn" class="recommend">Add Timer</button>
 	</div>
       </div>
       <div id="stopwatchPage" class="page">
