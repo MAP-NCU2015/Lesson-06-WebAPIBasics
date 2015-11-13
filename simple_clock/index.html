@@ -4,23 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Clock</title>
 
     <style>
-      body {
-        border: 1px solid black;
-      }
     </style>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
-    <script src="app.js" defer></script>
+    <script src="main.js" defer></script>
+    <script src="time_display.js" defer></script>
+    <script src="timer.js" defer></script>
+    <script src="alarm.js" defer></script>
 
   </head>
 
   <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <h1><span id="h1"></span></h1>
+    <h2><span id="h2"></span></h2>
+    <button type="button"id="start">start</button>
+    <!--<button type="button" id="pause">pause</button> -->
+    <button type="button" id="stop">stop</button>
+    <h3><span id="h3"></span></h3>
+    <select id="minute">
+    </select>
+     :     
+    <select id = "second">
+    </select>
+    <button type="button"id="set">set</button>
   </body>
 
-</html>
+</html> 
+
