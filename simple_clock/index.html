@@ -1,26 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <link rel="icon" type="image/png" href="icons/icon-128.png">
+    <title>Clock</title>
+    <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/clock.js" defer></script>
+    <script src="js/stopwatch.js" defer></script>
+    <script src="js/alarm.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
 
-    <title>Hello World</title>
+<body data-theme="b" data-content-theme="b">
+<div class="ui-page-theme-b" data-role="page">
+    <div data-role="tabs" id="tabs">
 
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
+        <!-- Tab list in Navigation -->
+        <div role="navigation" class="ui-navbar" data-role="navbar">
+            <ul>
+                <li><a href="#clock" class="ui-btn-active" data-ajax="false">Clock</a></li>
+                <li><a href="#stopwatch" data-ajax="false">Stop Watch</a></li>
+                <li><a href="#alarm" data-ajax="false">Alarm</a></li>
+            </ul>
+        </div>
 
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
-    <script src="app.js" defer></script>
+        <!-- Clock Session-->
+        <section id="clock" class="ui-content ui-body-b" role="main">
+            <h1>Clock</h1>
+            <div id="show" class="ui-grid-a">
+                <span id="Date" class="ui-block-b"></span>
+                <span id="UTC" class="ui-block-f"></span>
+            </div>
+            </br>
+            <div id="Time"></div>
+        </section>
 
-  </head>
+        <!-- Stop Watch Session-->
+        <section id="stopwatch" class="ui-content ui-body-b" role="main">
+            <h1>Stop Watch</h1>
+            <div class="show">
+                <div id="timer" class="ui-grid-a">00:00:00</div>
+            </div>
+            <div id="timerbtn" class="ui-grid-b">
+                <div class="ui-block-s">
+                    <a id="start" class="ui-btn ui-corner-all">Start</a>
+                </div>
+                <div class="ui-block-p">
+                    <a id="pause" class="ui-btn ui-corner-all">Pause</a>
+                </div>
+                <div class="ui-block-r">
+                    <a id="reset" class="ui-btn ui-corner-all">Reset</a>
+                </div>
+            </div>
+        </section>
 
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
+        <!-- Countdown Session-->
+        <section id="alarm" class="ui-content ui-body-d" role="main">
+            <h1>Alarm</h1>
+            <form>
+                Minute :
+                <select id="alarm_minute" ></select>
+                Second :
+                <select id="alarm_second"></select>
+            </form>
+            <button id="alarm_start" class="ui-btn ui-corner-all ui-btn-active">Start</button>
+			<button id="alarm_cancel" class="ui-btn ui-corner-all ui-btn-active">Cancel</button>
+            <div class="show">
+                <div id="alarm_time" class="ui-grid-a">00:00</div>
+            </div>
+        </section>
 
+</body>
 </html>
