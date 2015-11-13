@@ -9,23 +9,17 @@ define(function() {
 
     Controller.prototype.bind_start = function() {
         var start_button = $('section.main #stopwatch #start');
-        start_button.click(function() {
-            this.start_watch();
-        }.bind(this));
+        start_button.click(this.start_watch.bind(this));
     }
 
     Controller.prototype.bind_stop = function() {
         var stop_button = $('section.main #stopwatch #stop');
-        stop_button.click(function() {
-            this.stop_watch();
-        }.bind(this));
+        stop_button.click(this.stop_watch.bind(this));
     }
 
     Controller.prototype.bind_reset = function() {
         var reset_button = $('section.main #stopwatch #reset');
-        reset_button.click(function() {
-            this.reset_watch();
-        }.bind(this));
+        reset_button.click(this.reset_watch.bind(this));
     }
 
     Controller.prototype.start_watch = function() {
