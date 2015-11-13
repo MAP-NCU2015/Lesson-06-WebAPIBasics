@@ -1,26 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Simple Clock</title>
 
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
+    <link href="fonts.css" rel="stylesheet" type="text/css">
+    <link href="style/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="style/tabs.css" rel="stylesheet" type="text/css">
+    <link href="style/scrolling.css" rel="stylesheet" type="text/css">
+    <link href="style/buttons.css" rel="stylesheet" type="text/css">
+    <link href="style/status.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
 
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
     <script src="app.js" defer></script>
 
   </head>
 
   <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div id="wrapper">
+      <div id="upperPanel">
+	<div id="clockLabel">Time Loading...</div>
+	<i id="timezoneLabel">Timezone Loading...</i>
+	<div id="datePanel">
+	  <div id="yearLabel" class="dateLabel">Year Loading...</div>
+	  <div id="monthLabel" class="dateLabel">Month Loading...</div>
+	  <div id="dateLabel" class="dateLabel">Date Loading...</div>
+	  <div id="weekLabel" class="dateLabel">Week Loading...</div>
+	</div>
+      </div>
+      <div class="clearboth"></div>
+      <div id="timerPage" class="page active">
+	<div id="timer">
+	  <div class="clearboth">
+	    <div class="timeSelectorLabel">Minutes</div>
+	    <div class="timeSelectorLabel">Seconds</div>
+	  </div>
+	  <div class="clearboth">
+	    <select id="minuteSelector" class="timeSelector" placeholder="min"></select>
+	    <select id="secondSelector" class="timeSelector" placeholder="sec"></select>
+	  </div>
+	  <button id="addTimerBtn" class="recommend">Add Timer</button>
+	</div>
+      </div>
+      <div id="stopwatchPage" class="page">
+	<ul id="stopwatchLogs"></ul>
+	<div id="stopwatchLabel">0:00.000</div>
+	<div id="stoppingToolbar" class="toolbar active">
+	  <button id="startStopWatch" class="recommend">Start</button>
+	</div>
+	<div id="clockingToolbar" class="toolbar">
+	  <button id="splitStopWatch" class="recommend">Split</button>
+	  <button id="pauseStopWatch">Pause</button>
+	  <button id="resetStopWatch" class="danger">Reset</button>
+	</div>
+	<div id="loops"></div>
+      </div>
+    </div>
+    <ul role="tablist" class="bb-tablist">
+      <li class="tab active" data-tab-id="timer">
+	<i class="fa fa-bell"></i> Timer
+      </li>
+      <li class="tab" data-tab-id="stopwatch">
+	<i class="fa fa-clock-o"></i> StopWatch
+      </li>
+    </ul>
+    <section role="status"></section>
   </body>
 
 </html>
