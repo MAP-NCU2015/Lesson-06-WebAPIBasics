@@ -1,5 +1,29 @@
+@keyframes slideUp {
+    0%   {
+	transform: translateY(100%);
+	opacity: 0;
+    }
+    100% {
+	transform: translateY(0);
+	opacity: 1;
+    }
+}
+@keyframes slideDown {
+    0%   {
+	transform: translateY(0);
+	opacity: 1;
+    }
+    100% {
+	transform: translateY(100%);
+	opacity: 0;
+    }
+}
+
 body, html{
     margin: 0;
+}
+html{
+    overflow: -moz-hidden-unscrollable;
 }
 #wrapper{
     padding: 1em;
@@ -80,4 +104,12 @@ body, html{
 }
 #stopwatchLogs{
     padding: 0px;
+}
+[role=status].up{
+    animation-duration: 0.3s;
+    animation-name: slideUp;
+}
+[role=status].down{
+    animation-duration: 0.3s;
+    animation-name: slideDown;
 }

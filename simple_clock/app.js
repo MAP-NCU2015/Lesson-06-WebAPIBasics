@@ -50,6 +50,18 @@ Clock.prototype = {
 	    date: date
 	}
 	var alarm = window.navigator.mozAlarms.add(date, "ignoreTimezone", data);
+	alarm.onsuccess = function(){
+	    document.querySelector("[role=status]").innerHTML = "<p>Timer added!</p>";
+	    document.querySelector("[role=status]").classList.add("up");
+	    setTimeout(function(){
+		document.querySelector("[role=status]").classList.remove("up");
+		document.querySelector("[role=status]").classList.add("down");
+		setTimeout(function(){
+		    document.querySelector("[role=status]").classList.remove("down");
+		    document.querySelector("[role=status]").innerHTML = "";
+		},300);
+	    },1000);
+	}
 	alarm.onerror = function(){
 	    console.log("error");
 	}
