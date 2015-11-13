@@ -1,6 +1,8 @@
 
 var timestart, m = 0, s = 0, ss = 1;
+var today;
 var mode = 0;
+
 function second() {
     if ((ss % 100) == 0) {
         s += 1;
@@ -40,7 +42,22 @@ function stop() {
 
 function showtime() {
     today = new Date();
-    document.CLOCK.ALARM.value = today.toLocaleString();
+    var week = today.getDay();
+    if (week == 0)
+        week = "Sunday";
+    if (week == 1)
+        week = "Monday";
+    if (week == 2)
+        week = "Tuesday";
+    if (week == 3)
+        week = "Wednesday";
+    if (week == 4)
+        week = "Thursday";
+    if (week == 5)
+        week = "Friday";
+    if (week == 6)
+        week = "Saturday";
+    document.CLOCK.ALARM.value = week + " "+today.toLocaleString();
     TimerID = setTimeout("showtime()", 1000);
 }
 
