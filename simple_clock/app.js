@@ -42,11 +42,11 @@ Clock.prototype = {
     },
     addTimer: (minuteSelector, secondSelector) => {
 	console.log("Add timer: "+minuteSelector.value+":"+secondSelector.value);
-	var date = new Date(Date.now()+1000000000);
+	var date = new Date(Date.now() + 60000*minuteSelector.value + 1000*secondSelector.value);
 	var data = {
 	    date: date
 	}
-	var alarm = window.navigator.mozAlarms.add(data, "ignoreTimezone", date);
+	var alarm = window.navigator.mozAlarms.add(date, "ignoreTimezone", data);
 	alarm.onerror = function(){
 	    console.log("error");
 	}
