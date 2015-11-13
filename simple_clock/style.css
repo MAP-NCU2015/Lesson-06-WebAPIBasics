@@ -66,6 +66,11 @@ body, html{
     text-align: center;
     line-height: 150%;
 }
+#clockLabel p{
+    width: 25%;
+    display: inline-block;
+    margin: 0px;
+}
 #timezoneLabel{
     float: right;
     clear: right;

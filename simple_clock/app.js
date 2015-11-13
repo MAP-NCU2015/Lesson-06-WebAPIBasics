@@ -16,9 +16,9 @@ function Clock(){
 Clock.prototype = {
     updateDate: function(clock, clockLabel, yearLabel, monthLabel, dateLabel, weekLabel, timezoneLabel){
 	date = new Date();
-	clockLabel.innerHTML = (date.getHours() < 10 ? "0":"") + date.getHours() + ":" +
-	    (date.getMinutes() < 10 ? "0":"") + date.getMinutes() + ":" +
-	    (date.getSeconds() < 10 ? "0":"") + date.getSeconds();
+	clockLabel.innerHTML = "<p>" + (date.getHours() < 10 ? "0":"") + date.getHours() + "</p>" + ":" +
+	    "<p>" + (date.getMinutes() < 10 ? "0":"") + date.getMinutes() + "</p>" + ":" +
+	    "<p>" + (date.getSeconds() < 10 ? "0":"") + date.getSeconds() + "</p>";
 	yearLabel.innerHTML = date.getFullYear();
 	monthLabel.innerHTML = clock.monthNames[date.getMonth()];
 	dateLabel.innerHTML = date.getDate();
