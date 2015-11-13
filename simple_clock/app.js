@@ -14,7 +14,7 @@ Clock = function(){
 };
 
 displayClock = function(){
-	var now  = new Date();
+    var now  = new Date();
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
     var date = now.getDate();
@@ -112,9 +112,7 @@ Alarm = function(){
     alarmPlayer = document.getElementById('alarm');
 	var alarmsec = document.getElementById('sec');
 	var alarmmin = document.getElementById('min');
-	//console.log("sec");
-	//console.log(sec);
-	//console.log(min);
+	
 	for(i=1;i<60;i++){
 		var temp = document.createElement("option");
 		temp.value = i;
