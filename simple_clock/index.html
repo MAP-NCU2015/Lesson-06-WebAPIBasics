@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Alarm Clock</title>
+    <title>Good Clock</title>
 
     <style>
       body {
@@ -21,12 +21,24 @@
   <body onload="settime()">
     <!-- This code is in the public domain. Enjoy! -->
     <h1>My first alarm clock</h1>
+    
+    <hr>
     <form name="clock">
-      <p>Date：<input name="date" type="TEXT" size="25"></p>
-      <p>Time：<input name="time" type="TEXT" size="25"></p>
-      <p>Week：<input name="week" type="TEXT" size="25"></p>
-      <p>Zone：<input name="zone" type="TEXT" size="25"></p>
+      <p>Date：<input name="date" type="TEXT" size="15"></p>
+      <p>Time：<input name="time" type="TEXT" size="15"></p>
+      <p>Week：<input name="week" type="TEXT" size="15"></p>
+      <p>Zone：<input name="zone" type="TEXT" size="15"></p>
     </form>
+    
+    <hr>
+    <p>Stopwatch：</p>
+    <input id="stopwatch_display" type="text" value="00:0.00" size="15">
+    <input type="button" value="Start" onclick="start()">
+    <input type="button" value="Pause" onclick="pause()">
+    <input type="button" value="Reset" onclick="stop()">
+    
+    <hr>
+    
   </body>
 
 </html>
