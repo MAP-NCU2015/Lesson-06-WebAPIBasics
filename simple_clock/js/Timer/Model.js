@@ -1,11 +1,10 @@
-(function(window) {
+define(function() {
     'use strict';
 
     function Model() {
+        var time = 0;
     }
 
-    // Export to window
-    window.Timer = window.Timer || {};
-    window.Timer.Model = Model;
-})(window);
+    return Model;
+});
 

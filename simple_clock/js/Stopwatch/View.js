@@ -1,4 +1,4 @@
-(function(window) {
+define(function() {
     'use strict';
 
     function View() {
@@ -23,8 +23,6 @@
         this.update_milli(milli);
     }
 
-    // Export to window
-    window.Stopwatch = window.Stopwatch || {};
-    window.Stopwatch.View = View;
-})(window);
+    return View;
+});
 

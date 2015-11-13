@@ -1,4 +1,4 @@
-(function(window) {
+define(function() {
     'use strict';
 
     function View() {
@@ -26,8 +26,6 @@
         this.update_timezone(timezone);
     }
 
-    // Export to window
-    window.Clock = window.Clock || {};
-    window.Clock.View = View;
-})(window);
+    return View;
+});
 

@@ -1,4 +1,4 @@
-(function(window) {
+define(function() {
     'use strict';
 
     function Model() {
@@ -93,8 +93,6 @@
         return time;
     }
 
-    // Export to window
-    window.Clock = window.Clock || {};
-    window.Clock.Model = Model;
-})(window);
+    return Model;
+});
 

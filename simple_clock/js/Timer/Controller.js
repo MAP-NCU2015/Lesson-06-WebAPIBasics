@@ -1,4 +1,4 @@
-(function(window) {
+define(function() {
     'use strict';
 
     function Controller(model, view) {
@@ -10,8 +10,6 @@
     Controller.prototype.start = function() {
     }
 
-    // Export to window
-    window.Timer = window.Timer || {};
-    window.Timer.Controller = Controller;
-})(window);
+    return Controller;
+});
 

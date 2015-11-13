@@ -1,4 +1,4 @@
-(function(window) {
+define(function() {
     'use strict';
 
     function Controller(model, view) {
@@ -16,8 +16,6 @@
         }.bind(this), 100);
     }
 
-    // Export to window
-    window.Clock = window.Clock || {};
-    window.Clock.Controller = Controller;
-})(window);
+    return Controller;
+});
 

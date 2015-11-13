@@ -1,4 +1,4 @@
-(function(window) {
+define(function() {
     'use strict';
 
     function Controller(model, view) {
@@ -57,8 +57,6 @@
         this.bind_reset();
     }
 
-    // Export to window
-    window.Stopwatch = window.Stopwatch || {};
-    window.Stopwatch.Controller = Controller;
-})(window);
+    return Controller;
+});
 
