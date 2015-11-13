@@ -127,8 +127,11 @@ window.addEventListener("load", function() {
     window.addEventListener("click", function(event){
 	if(event.target.classList.contains('tab')){
 	    var id = event.target.dataset.tabId;
-	    document.querySelector(".active").classList.remove("active");
+	    document.querySelector(".page.active").classList.remove("active");
+	    document.querySelector(".bb-tablist .active").classList.remove("active");
 	    document.querySelector("#"+id+"Page").classList.add("active");
+	    event.target.classList.add("active");
+	    console.log(document.querySelector("[data-tab-id="+event.target.dataset.tabId+"]"));
 	}else if(event.target.id == "addTimerBtn"){
 	    this.addTimer(this.minuteSelector, this.secondSelector);
 	}else if(event.target.id == "startStopWatch"){

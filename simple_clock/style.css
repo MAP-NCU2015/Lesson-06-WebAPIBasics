@@ -47,6 +47,9 @@ html{
     cursor: pointer;
     line-height: 72px; /*no good, bob*/
 }
+.bb-tablist .active{
+    border-bottom: #00CAF2 5px solid;
+}
 #upperPanel{
     width: 100%;
 }
