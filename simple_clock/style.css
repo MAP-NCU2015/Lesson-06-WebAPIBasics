@@ -17,6 +17,7 @@ body, html{
 .bb-tablist{
     text-align: center;
     vertical-align: middle;
+    position: fixed;
 }
 .tab{
     cursor: pointer;
