@@ -38,7 +38,7 @@
                     break;
                     
             }
-            var textContent=today.getFullYear()+"/"+today.getMonth()+
+            var textContent=today.getFullYear()+"/"+(today.getMonth()+1)+
             "/"+today.getDate()+"<br/>"+today.getHours()+":"+today.getMinutes()+
             ":"+today.getSeconds()+"<br/>"+""+day+"<br/>"+"UTC "+today.getTimezoneOffset()/-60;
             
