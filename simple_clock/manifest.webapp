@@ -1,15 +1,44 @@
 {
-  "name": "simple_clock",
-  "description": "A Simple Clock Application",
+  "version": "0.2.0",
+  "name": "clock",
+  "description": "Demonstrates how to use permissions to load remote content",
   "launch_path": "/index.html",
   "icons": {
-    "16": "/icons/icon16x16.png",
-    "48": "/icons/icon48x48.png",
-    "60": "/icons/icon60x60.png",
-    "128": "/icons/icon128x128.png"
+    "256": "/img/icons/icon256x256.png"
   },
   "developer": {
     "name": "Your name",
     "url": "http://example.com"
-  }
+  },
+  "type": "privileged",
+  "permissions": {
+    "systemXHR": {
+      "description": "Required to load remote content"
+    },
+    "desktop-notification": {
+      "description": "Needed for creating system notifications."
+    },
+    "alarms": {
+      "description": "Required to schedule alarms"
+    }
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "locales": {
+    "es": {
+      "name": "Aplicación privilegiada",
+      "description": "Demuestra cómo utilizar permisos para cargar contenido remoto",
+      "permissions": {
+        "systemXHR": {
+          "description": "Requerido para cargar contenido remoto"
+        }
+      }
+    }
+  },
+  "messages": [
+    { "notification": "/countdown.html" },
+    { "alarm": "/countdown.html" }
+  ],
+  "default_locale": "en"
 }
