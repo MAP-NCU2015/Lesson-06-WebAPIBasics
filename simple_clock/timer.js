@@ -43,7 +43,7 @@
       }
     },
     stop() {
-      exports.clearInterval(this.already);
+      clearInterval(this.already);
       this.already = null;
     },
     reset() {

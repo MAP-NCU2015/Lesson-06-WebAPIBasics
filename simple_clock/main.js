@@ -6,4 +6,5 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var todotimer = new TimerManager();
     todotimer.init();
     var todoalarm = new AlarmManager();
+    todoalarm.init();
 });
