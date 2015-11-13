@@ -108,6 +108,7 @@ Stopwatch.prototype = {
     },
     reset: function(){
 	this.startTime = 0;
+	this.stopwatchLogsCount = 0;
 	this.stopwatchLabel.innerHTML = "0:00.000";
 	this.stoppingToolbar.classList.add("active");
 	this.clockingToolbar.classList.remove("active");
