@@ -83,6 +83,18 @@ function reset() {
 }
 
 //alarm
+
+//Notification.requestPermission();
+
+window.addEventListener('load', function () {
+  Notification.requestPermission(function (status) {
+    // This allows to use Notification.permission with Chrome/Safari
+    if (Notification.permission !== status) {
+      Notification.permission = status;
+    }
+  });
+})
+
 var alarm_main = document.getElementById("addalarm");
 alarm_main.addEventListener('click' , function(event) {
   var alarm_min = document.getElementById("alarm_min");
@@ -100,7 +112,9 @@ alarm_main.addEventListener('click' , function(event) {
   request.onerror = function () { 
     console.log("An error occurred: " + this.error.name);
   };
-  navigator.mozSetMessageHandler("alarm", function (request) { 
-    new Notification("Alarm!!");
+  navigator.mozSetMessageHandler("alarm", function (MozAlarm) { 
+    var n = new Notification("Simple_Clock", { body: "Alarm~!" });
+    n;
+      //n.setTimeout(n.close , 5000); 
   });
 });
