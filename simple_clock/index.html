@@ -4,23 +4,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
+    <title>Clock</title>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
     <script src="app.js" defer></script>
-
+    <link rel="stylesheet" href="main.css">
   </head>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div id="clock"></div>
+    <div id="stopwatch">
+      <div id="monitor">
+        <p id="st">STOPWATCH</p>
+        <p id="output">00:00.00</p>
+      </div>
+      <button id="start" >START</button>
+      <button id="pause" >STOP</button>
+      <button id="reset" >RESET</button>
+    </div>
+    <div id="alarm">
+      <h1>Alarm Clock</h1> 
+      <p>Ringtone:John Lennon-Imagine</p> 
+      <div id="al">  
+        <select id="sethour" name="setHour[]">
+          <option value="">時</option>
+        </select>
+
+        <select id="setminute" name="setMin[]">
+          <option value="">分</option>
+        </select>
+
+        <button id="setalarm">Done!</button>
+         <audio preload="true" id="audio">
+            <source src="Imagine.mp3" />
+         </audio>
+      </div>
+      <div id="alarmtext"></div>
+      
+    </div>
   </body>
 
 </html>
