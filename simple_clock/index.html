@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Alarm Clock</title>
 
     <style>
       body {
-        border: 1px solid black;
+        border: 2px solid black;
       }
     </style>
 
@@ -18,9 +18,15 @@
 
   </head>
 
-  <body>
+  <body onload="settime()">
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <h1>My first alarm clock</h1>
+    <form name="clock">
+      <p>Date：<input name="date" type="TEXT" size="25"></p>
+      <p>Time：<input name="time" type="TEXT" size="25"></p>
+      <p>Week：<input name="week" type="TEXT" size="25"></p>
+      <p>Week：<input name="zone" type="TEXT" size="25"></p>
+    </form>
   </body>
 
 </html>
