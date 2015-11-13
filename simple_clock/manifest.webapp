@@ -11,7 +11,7 @@
   "developer": {
     "name": "Nick",
     "url": "https://github.com/nickyeh97"
-  }
+  },
   "permissions": {
     "alarms": {
       "description": "Required to schedule alarms"

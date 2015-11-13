@@ -110,8 +110,8 @@ check = function(i){
 
 Alarm = function(){
     alarmPlayer = document.getElementById('alarm');
-	var sec = document.getElementById('sec');
-	var min = document.getElementById('min');
+	var alarmsec = document.getElementById('sec');
+	var alarmmin = document.getElementById('min');
 	//console.log("sec");
 	//console.log(sec);
 	//console.log(min);
@@ -119,18 +119,47 @@ Alarm = function(){
 		var temp = document.createElement("option");
 		temp.value = i;
 		temp.text = i;
-		sec.add(temp);
+		alarmsec.add(temp);
 	}
 	for(i=0;i<60;i++){
 		var temp = document.createElement("option");
 		temp.value = i;
 		temp.text = i;
-		min.add(temp);
+		alarmmin.add(temp);
 	}
-	sec.options[new Date().getSeconds()].selected = true;
-	min.options[new Date().getMinutes()].selected = true;
+	alarmsec.options[new Date().getSeconds()].selected = true;
+	alarmmin.options[new Date().getMinutes()].selected = true;
 	
-	//setAlarmButton = document.getElementById('set_alarm');
+	setAlarmButton = document.getElementById('set_alarm');
+	setAlarmButton.addEventListener('click',AlarmButtonClicked);
+	console.log("setAlarmButton");
+	//var alarms = window.navigator.mozAlarms;
+
+	navigator.mozSetMessageHandler("alarm", function (mozAlarm) { 
+        var notification = new Notification("Bang Bang Bang"); 
+        setTimeout(notification.close.bind(notification), 5000);
+    });
+};
+AlarmButtonClicked = function(){
+	console.log("setAlarmButton");
+		var nowTime = new Date();
+		var alarmTime = new Date();
+		alarmTime.setMinutes(alarmmin.options[alarmmin.selectedIndex].value);
+		alarmTime.setSeconds(alarmsec.options[alarmsec.selectedIndex].value);
+		if(nowTime.getSeconds() > alarmTime.getSeconds() ||
+	   		nowTime.getMinutes() > alarmTime.getMinutes() ){
+			alarmTime.setDate(nowTime.getDate() + 1);
+		}
+		var data = {foo: "bar"};
+		var task = navigator.mozAlarms.add(alarmTime, "ignoreTimezone",data);
+
+		task.onsuccess = function () {
+  			console.log("The alarm has been scheduled");
+		};
+
+		task.onerror = function () { 
+  			console.log("An error occurred: " + this.error.name);
+		};
 };
     
     
