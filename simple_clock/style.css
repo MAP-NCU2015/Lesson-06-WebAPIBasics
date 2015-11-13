@@ -22,9 +22,6 @@
 body, html{
     margin: 0;
 }
-html{
-    overflow: -moz-hidden-unscrollable;
-}
 #wrapper{
     padding: 1em;
     margin-bottom: 72px;
