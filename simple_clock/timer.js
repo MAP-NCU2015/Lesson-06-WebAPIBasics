@@ -92,7 +92,7 @@
             this.startat=0;
             this.pauseat=0;
             this.startbtn.id="start";
-            this.startbtn.value="start";
+            this.startbtn.innerHTML="start";
             //this.interval=null;
         }
 
