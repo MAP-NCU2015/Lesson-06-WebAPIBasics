@@ -44,27 +44,29 @@ Clock.prototype = {
 	};
     },
     addTimer: function(minuteSelector, secondSelector){
-	//check support for desktop browser
 	var date = new Date(Date.now() + 60000*minuteSelector.value + 1000*secondSelector.value);
 	var data = {
 	    date: date
 	}
 	var alarm = window.navigator.mozAlarms.add(date, "ignoreTimezone", data);
-	alarm.onsuccess = function(){
-	    document.querySelector("[role=status]").innerHTML = "<p>Timer added!</p>";
-	    document.querySelector("[role=status]").classList.add("up");
+	alarm.onsuccess = () => {
+	    this.popStatus("Alarm Added!");
+	}
+	alarm.onerror = () => {
+	    this.popStatus("Fail to add");
+	}
+    },
+    popStatus: function(str){
+	document.querySelector("[role=status]").innerHTML = "<p>"+str+"</p>";
+	document.querySelector("[role=status]").classList.add("up");
+	setTimeout(function(){
+	    document.querySelector("[role=status]").classList.remove("up");
+	    document.querySelector("[role=status]").classList.add("down");
 	    setTimeout(function(){
-		document.querySelector("[role=status]").classList.remove("up");
-		document.querySelector("[role=status]").classList.add("down");
-		setTimeout(function(){
-		    document.querySelector("[role=status]").classList.remove("down");
-		    document.querySelector("[role=status]").innerHTML = "";
-		},300);
-	    },1000);
-	}
-	alarm.onerror = function(){
-	    console.log("error");
-	}
+		document.querySelector("[role=status]").classList.remove("down");
+		document.querySelector("[role=status]").innerHTML = "";
+	    },300);
+	},1000);
     }
 };
 function Stopwatch(){
