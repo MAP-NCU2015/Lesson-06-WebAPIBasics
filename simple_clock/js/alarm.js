@@ -21,13 +21,18 @@
                 }
                 this.min = $('#alarm_minute').val();
                 this.sec = $('#alarm_second').val();
-				if(this.min !== 0 && this.sec !== 0){
-					$('#alarm_time').text(this.format(this.min) + ":" + this.format(this.sec));
+				
+				if(this.sec == 0 && this.min == 0){
+					var notify = new Notification("還未設定Alarm");
+					notify.show;
+				}
+				
+				if(this.min !== 0 || this.sec !== 0){
+					$('#alarm_time').text(this.modify(this.min) + ":" + this.modify(this.sec));
 					this.interval = setInterval(this.dropping.bind(this), 1000);
-				}	
+				}
             }
-          },
-		  
+        },
 		
 		cancelAlarm(){
 			if(this.run){
@@ -35,7 +40,7 @@
 				this.min = 0;
 				this.sec = 0;
 				clearInterval(this.interval);
-				$('#alarm_time').text(this.format(0) + ":" + this.format(0));
+				$('#alarm_time').text(this.modify(this.min) + ":" + this.modify(this.sec));
 			}
 		},
 
@@ -45,7 +50,8 @@
                     this.run = false;
                     clearInterval(this.interval);
                 } else if(this.sec == 1 && this.min == 0) {
-                    this.notify();
+					var notify = new Notification("時間到了");
+					notify.show;
                     this.sec = this.sec - 1;	
                 } else if(this.sec == 0 && this.min > 0) {
                     this.min -= 1;
@@ -53,24 +59,16 @@
                 } else {
                     this.sec = this.sec - 1;
                 }
-                $('#alarm_time').text(this.format(this.min) + ":" + this.format(this.sec));
+                $('#alarm_time').text(this.modify(this.min) + ":" + this.modify(this.sec));
             }
         },
 
-        notify() {
-            if (window.Notification && Notification.permission === "granted") {
-                var notify = new Notification("時間到了");
-                notify.show;
-            }
-        },
-
-        format(num) {
+        modify(num) {
             var n = num;
             return n < 10? "0"+ n : n;
         }
 
     };
-
 
     exports.alarm = alarm;
 })(window);

@@ -32,14 +32,15 @@
                     break;
             }
 		
-		$('#Date').text(this.modify(now.getMonth()+1) + "/" + this.modify(now.getDate()) + "/" + now.getFullYear() + " " + day);
+		$('#Date').text(now.getFullYear() + "/" + this.modify(now.getMonth()+1) + "/" + this.modify(now.getDate()) + " " + day);
 		$('#UTC').text("UTC:" + now.getTimezoneOffset()/-60);
 		$('#Time').text(this.modify(now.getHours()) + ":" + this.modify(now.getMinutes()) + ":" + this.modify(now.getSeconds()));
 		
 		},
 		
 		modify(num){
-			return num < 10? "0"+ num : num;
+			var n = num;
+            return n < 10? "0"+ n : n;
 		}
 		
 	};
