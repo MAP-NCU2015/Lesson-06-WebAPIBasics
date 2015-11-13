@@ -73,6 +73,7 @@ function Stopwatch(){
     this.stopwatchTime = 0;
     this.startTime = 0;
     this.stopwatchLogs = document.querySelector("#stopwatchLogs");
+    this.stopwatchLogsCount = 0;
     this.stopwatchStopwatchLabel;
     this.stopwatchLabel = document.querySelector("#stopwatchLabel");
     this.stopwatchUpdateProccess = null;
@@ -100,7 +101,8 @@ Stopwatch.prototype = {
 	}
     },
     split: function(updateFontSize){
-	this.stopwatchLogs.innerHTML += "<li>" + this.stopwatchLabel.innerHTML + "</li>";
+	var numOnLeft = "<i>" + (++this.stopwatchLogsCount) + "</i>";
+	this.stopwatchLogs.innerHTML += "<li>" + numOnLeft + this.stopwatchLabel.innerHTML + "</li>";
 	updateFontSize();
 	window.scroll(0,document.body.clientHeight);
     },

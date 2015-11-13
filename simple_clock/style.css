@@ -109,6 +109,13 @@ html{
 #stopwatchLogs li{
     border-bottom: 1px solid gray;
 }
+#stopwatchLogs li i{
+    float: left;
+    color: #999;
+    font-family: Fira Sans;
+    font-weight: 200;
+    font-size: 60%;
+}
 .toolbar{
     display: none;
     text-align: center;
