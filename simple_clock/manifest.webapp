@@ -10,12 +10,16 @@
   },
     
     "permissions": {
-  "desktop-notification": {
-    "description": "Needed for creating system notifications."
-  }
-},
+      "alarms": {
+        "description": "Required to schedule alarms"
+      },
+        "desktop-notification": {
+          "description": "Needed for creating system notifications."
+        }
+    },
     "messages": [
-      { "alarm": "/index.html" }
+      { "alarm": "/index.html" },
+      { "notification": "/index.html" }
     ],
   "developer": {
     "name": "劉文誠",

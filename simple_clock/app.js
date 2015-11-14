@@ -71,37 +71,35 @@ function count() {
 }
 
 function stop() {
-  state = 0;
-  clearInterval(c);
+  if (state == 1) {
+    state = 2;
+    clearInterval(c);
+  }
+  else {
+  }
 }
 
 function reset() {
-  t = 0;
-  state = 0;
-  clearInterval(c);
-  timer_main.innerHTML = "00:00.00";  
+  if (state == 0) {
+  }
+  else {
+    t = 0;
+    state = 0;
+    clearInterval(c);
+    timer_main.innerHTML = "00:00.00"; 
+  }
 }
 
 //alarm
-
-//Notification.requestPermission();
-
-window.addEventListener('load', function () {
-  Notification.requestPermission(function (status) {
-    // This allows to use Notification.permission with Chrome/Safari
-    if (Notification.permission !== status) {
-      Notification.permission = status;
-    }
-  });
-})
 
 var alarm_main = document.getElementById("addalarm");
 alarm_main.addEventListener('click' , function(event) {
   var alarm_min = document.getElementById("alarm_min");
   var alarm_sec = document.getElementById("alarm_sec");
   var set_time = new Date();
-  set_time.setMinutes(set_time.getMinutes() + alarm_min.value);
-  set_time.setSeconds(set_time.getSeconds() + alarm_sec.value);
+  set_time.setMinutes(parseInt(set_time.getMinutes()) + parseInt(alarm_min.value));
+  set_time.setSeconds(parseInt(set_time.getSeconds()) + parseInt(alarm_sec.value));
+
   var data = {
     foo: "bar"
   }
@@ -114,7 +112,5 @@ alarm_main.addEventListener('click' , function(event) {
   };
   navigator.mozSetMessageHandler("alarm", function (MozAlarm) { 
     var n = new Notification("Simple_Clock", { body: "Alarm~!" });
-    n;
-      //n.setTimeout(n.close , 5000); 
   });
 });
