@@ -38,7 +38,12 @@
     <input type="button" value="Reset" onclick="stop()">
     
     <hr>
-    
+    <p>
+        鬧鐘設定：<input id="setmin" type="text" value="0" size="1">分
+        <input id="setsec" type="text" value="0" size="1">秒後 響起
+        <input type="button" value="確定" onclick="setalarm()">
+    </p>
+    <p id="alarmtime">鐘響時間：</p>
   </body>
 
 </html>
