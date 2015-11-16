@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-
-    <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
-
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
-    <script src="app.js" defer></script>
-
-  </head>
-
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
-
+    <head>
+        <title>102502010</title>
+        <script type="text/javascript" src="calendar.js"></script>
+        <script type="text/javascript" src="clock.js"></script>
+        <script type="text/javascript" src="timer.js"></script>
+        <script type="text/javascript" src="alarm.js"></script>
+        <script type="text/javascript">
+            window.addEventListener("load", function() {
+                clock();
+                calendar();
+                timer();
+                alarm();
+            });
+        </script>
+        <link type="text/css" rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="clock">
+            <span id="hr">00</span>
+            <span>:</span>
+            <span id="min">00</span>
+            <span>:</span>
+            <span id="sec">00</span>
+            <span id="suffix">--</span>
+            <span id="GMT">------</span>           
+        </div>
+        <div class="calendar">
+            <p id="month-year">0000 ---------</p>
+            <p id="date">00</p>
+            <p id="day">---------</p>
+        </div>
+        <div class="timer">
+            <span id="min1">00</span>
+            <span>:</span>
+            <span id="sec1">00</span>
+            <span>:</span>
+            <span id="msec">00</span>
+            <button type="button" id="start">start</button>
+            <button type="button" id="pause">pause</button>
+            <button type="button" id="reset">reset</button>
+        </div>
+        <div class="alarm">
+            <input type="number" id="alarm_hour">
+            <input type="number" id="alarm_minute">
+            <button type="button" id="alarmbutton">set alarm</button>
+        </div>
+    </body>
 </html>
