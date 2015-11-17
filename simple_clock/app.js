@@ -1,7 +1,6 @@
 window.addEventListener("load", function() {
 	Clock();//呼叫時鐘、碼表、鬧鐘
 	StopWatch();
-	Alarm();
  });
 
 Clock = function(){
@@ -81,7 +80,7 @@ displayWatch = function(){
 			count_1 = 0;
 		}
 	}	
-	var display_count = count_2 + ":" + count_1 + ":" + count_0;
+	var display_count = count_2 + ":" + count_1 + "." + count_0;
 	StopWatch.textContent = display_count;
 }
 
@@ -100,24 +99,17 @@ resetbutton.addEventListener('click', function (event) {//結束並歸零
 	startflag = 0;
 });
 
-var alarm_hour = -1;//未設鬧鐘狀態
-var alarm_minute = -1;
-Alarm = function(){
-	Alarm = document.getElementById('Alarm');
-	displayAlarm();
-	setInterval(displayAlarm,1000);//一秒檢查一次是否到時間
-}
+var alarmBtn = document.querySelector('#alarm');
 
-displayAlarm = function(){
+alarmBtn.addEventListener('click', function (event) {
 	var time = new Date();
-	if(alarm_hour==time.getHours()&& alarm_minute==time.getMinutes()){
-		window.alert("Time to wake up~~");//跳出起始視窗
-		alarm_hour = -1;
-		alarm_minute = -1;
-	}
-}
+	var afterminute = document.querySelector('#after_minute').value + time.getMinutes();
+	var aftersecond = document.querySelector('#after_second').value + time.getSeconds();
+	time.setMinutes(time.getMinutes() +afterminute.value);
+	time.setSeconds(time.getSeconds() +aftersecond.value);
+	var alarm = navigator.mozAlarms.add(time, 'ignoreTimezone');
+});
 
-alarmbutton.addEventListener('click', function (event) {	
-	alarm_hour = document.getElementById('alarm_hour').value;//拿出input中的鬧鐘值
-	alarm_minute = document.getElementById('alarm_minute').value;
+navigator.mozSetMessageHandler("alarm", function (alarm) {
+	new Notification("Time to wake up!!");
 });
