@@ -2,6 +2,7 @@ window.addEventListener("load", function() {
   console.log("Hello World!");
   setInterval(update, 1000);
   StopWatch();
+  Alarm();
 });
 
 function getTime() {
@@ -91,3 +92,21 @@ function StopWatch() {
          stopwatch.innerHTML = "00:00:00";
    });
 }
+
+function Alarm() {
+   var startAlarm = document.getElementById('alarm_btn');
+   startAlarm.addEventListener('click', function(event) {
+      var date = new Date();
+      var alarm_min = document.getElementById('alarm_min');
+      var alarm_sec = document.getElementById('alarm_sec');
+      var t_min = +alarm_min.value + date.getMinutes();
+      var t_sec = +alarm_sec.value + date.getSeconds();
+      date.setMinutes(t_min);
+      date.setSeconds(t_sec);
+      var alarm = navigator.mozAlarms.add(date, 'ignoreTimezone');
+   });
+}
+
+navigator.mozSetMessageHandler("alarm", function(alarm) {
+    new Notification("Time up");
+ });
