@@ -9,7 +9,19 @@
     "128": "/icons/icon128x128.png"
   },
   "developer": {
-    "name": "Your name",
-    "url": "http://example.com"
-  }
+    "name": "JACK",
+    "url": "https://github.com/jack99541008"
+  },
+  "permissions": {
+    "alarms": {
+      "description": "Required to schedule alarms"
+    },
+    "desktop-notification": {
+     "description": "Needed for creating system notifications."
+    }
+  },
+  "messages": [
+    { "alarm": "/index.html" },
+    { "notification": "/index.html"}
+  ]
 }
