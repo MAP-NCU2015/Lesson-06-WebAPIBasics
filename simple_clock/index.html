@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Kaibro's clock</title>
 
     <style>
       body {
         border: 1px solid black;
+        background-color: black;
+      }
+      .container {
+        padding: 20px;
+        background-color: white;
       }
     </style>
 
@@ -20,7 +25,32 @@
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div class="container">
+      <h1>Kaibro's clock</h1>
+      <div id="div_current">
+            <p id="current">Current Time: 00:00:00</p>
+      </div>
+      <div id="div_week">
+        <p id="week"></p>
+      </div>
+      <div id="div_timezone">
+        <p id="timezone"></p>
+      </div>
+      <h1>Kaibro's stopwatch</h1>
+      <div id="div_stopwatch">
+        <p id="stopwatch"></p>
+        <input type="button" id="start" value="start">
+        <input type="button" id="pause" value="pause">
+        <input type="button" id="reset" value="reset">
+      </div>
+      <h1>Kaibro's Alarm</h1>
+      <div id="div_alarm">
+          <p> set Alarm </p>
+          <input type="number" id="alarm_min"> minutes<br>
+          <input type="number" id="alarm_sec"> seconds<br><br>
+          <input type="button" id="alarm_btn" value="SET">
+      </div>
+    </div>
   </body>
 
 </html>

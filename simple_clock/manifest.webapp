@@ -9,7 +9,19 @@
     "128": "/icons/icon128x128.png"
   },
   "developer": {
-    "name": "Your name",
-    "url": "http://example.com"
-  }
+    "name": "KaiBro",
+    "url": "https://github.com/w181496"
+  },
+  "permissions": {
+    "alarms": {
+      "description": "Required to schedule alarms"
+    },
+    "desktop-notification": {
+      "description": "Required to send notifications"
+    }
+  },
+  "messages": [
+    { "alarm": "/index.html" },
+    { "notification": "/index.html" }
+  ]
 }
