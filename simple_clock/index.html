@@ -3,12 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-
-    <title>Hello World</title>
+    
+    <title>SimpleClock</title>
 
     <style>
       body {
         border: 1px solid black;
+      }
+      div {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #clock {
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+      }
+      #stopwatch {
+        border-bottom: 1px solid;
       }
     </style>
 
@@ -18,9 +32,36 @@
 
   </head>
 
-  <body>
+  <body onload="setInterval('currentTime()', 1000); show();">
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <h1>SimpleClock</h1>
+    <div id="clock">
+      <div>
+        <label id="time">Time</label>
+      </div>
+      <div>
+        <label id="week">Week</label>
+      </div>
+      <div>
+        <label id="timezone">Timezone</label>
+      </div>
+    </div>
+    <div id="stopwatch">
+      <div>
+        <label>Stop Watch</label>
+      </div>
+      <div>
+        <label id="countTime">00:00:00</label>
+      </div>
+      <div>
+        <button onclick="start();">Start</button>
+        <button onclick="pause();">Pause</button>
+        <button onclick="reset();">Reset</button>
+      </div>
+    </div>
+    <div id="alarm">
+    </div>
+   </div>
   </body>
 
 </html>
