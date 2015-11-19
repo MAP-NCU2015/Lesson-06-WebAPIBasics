@@ -1,26 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+<head>
+  <style type="text/css">
 
-    <title>Hello World</title>
+</style>
 
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
+<script type="text/javascript">
+	var c=0
+var Time={
+	padfield:function(f){
+		return f
+	},
+	Current:function(){
+	var time=new Date()
+		this.ctref.innerHTML= time
+		this.ctref.setAttribute("title", this.padfield(time.getHours())+":"+this.padfield(time.getMinutes()))
+			if (this.ctref.title==(this.hdone+":"+this.mdone) && c<1){
+					this.hinput.disabled=false
+					this.minput.disabled=false
+					c++
+			window.alert("DONE!")
+			}
+	},
+	init:function(){
+		var time=new Date()
+		this.ctref=document.getElementById("time")
+		this.submitref=document.getElementById("submit")
+		this.submitref.onclick=function(){
+			Time.setalarm()
+			this.value="Alarm Set"
+			return false
+		}
+		var tinput=document.getElementsByTagName("select")
+		this.hinput=tinput[0]
+		this.minput=tinput[1]
+		for (var i=0; i<60; i++){
+			if (i<24) 
+			this.hinput[i]=new Option(this.padfield(i), this.padfield(i), false, time.getHours()==i)
+			this.minput[i]=new Option(this.padfield(i), this.padfield(i), false, time.getMinutes()==i)
+		}
+		Time.Current()
+		Time.timer=setInterval(function(){Time.Current()}, 1000)
+	},
+	setalarm:function(){
+		this.hdone=this.hinput.options[this.hinput.selectedIndex].value
+		this.mdone=this.minput.options[this.minput.selectedIndex].value
+		this.hinput.disabled=true
+		this.minput.disabled=true
+	}
+}
 
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
-    <script src="app.js" defer></script>
+</script>
 
-  </head>
+</script>
+</head>
+<body>
+<form action="" method="">
+<div><div class="leftcolumn">Current Time:</div> <span id="time"></span></div>
+<div><div class="leftcolumn">Set Alarm:</div> <span><select></select> Hour</span> <span><select></select> Minutes</span></div>
+<input type="submit" value="Set Alarm!" id="submit" />
+</div>
+</form>
 
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
 
+<script type="text/javascript">
+
+Time.init()
+
+</script>
+</body>
 </html>
