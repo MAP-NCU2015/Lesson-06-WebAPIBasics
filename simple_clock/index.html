@@ -4,11 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Myclockby102502011</title>
 
     <style>
-      body {
+      div.border {
         border: 1px solid black;
+        padding: 8px;
+      }
+      div.empty {
+        padding: 5px;
       }
     </style>
 
@@ -17,10 +21,36 @@
     <script src="app.js" defer></script>
 
   </head>
+	<h1>Wecome my clock!</h1>
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div align = "center" class="border">
+	  <h1>Now time</h1>
+      <h1 id = "clock"></h1>
+    </div>
+    
+    <div class="empty">
+    </div>
+    
+    <div align = "center" class="border">
+      <h1>My StopWatch<h1>
+      <h2 id="timer">00:00.00</h2>
+      <button onclick = "start()">Start</button>
+      <button onclick = "stop()">Pause</button>
+      <button onclick = "reset()">Reset</button>
+    </div>
+    
+    <div class="empty">
+    </div>
+    
+    <div align = "center" class="border">
+	  <h1>My Alarm<h1>
+      <input type="number" id="alarm_min" value="0"> minutes</input> <br>
+      <input type="number" id="alarm_sec" value="0"> seconds</input> <br>
+      <button id="alarm_btn">set alarm</button>
+    </div>
+
   </body>
 
 </html>

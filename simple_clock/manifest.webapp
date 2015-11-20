@@ -8,8 +8,22 @@
     "60": "/icons/icon60x60.png",
     "128": "/icons/icon128x128.png"
   },
+  
   "developer": {
-    "name": "Your name",
+    "name": "郭皓磊",
     "url": "http://example.com"
   }
+  
+  "permissions": {
+	"alarms": {
+		"description": "Required to schedule alarms"
+	},
+		"desktop-notification": {
+			"description": "Required to send notifications."
+		}
+  },
+  "messages": [
+	{"alarms": "/index.html"},
+	{"notification": "/index.html" }
+  ]
 }
