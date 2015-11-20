@@ -1,6 +1,7 @@
 window.addEventListener("load", function() {
   console.log("YenC's CLOCK");
   window.setInterval(update, 1000);
+  stopWatch();
 });
 
 function getTime(){
@@ -38,8 +39,51 @@ function getTimezone(){
 return(s); 
 }
     
+function stopWatch(){
+  var stopwatch = document.getElementById('stopwatch');
+  var start = document.getElementById('start');
+  var pause = document.getElementById('pause');
+  var reset = document.getElementById('reset');
+  var running = 0;
+  var timer = 0;
+  var count = 0;
+  stopwatch.innerHTML = "00:00:00";
+  
+  start.addEventListener('click', function(event) {
+    if (running == 0){
+      running = 1;
+      timer = setInterval(function(){
+        count += 1;
+        var min = fixZero(Math.floor(count/6000));
+        var sec = fixZero(Math.floor(count/100 % 60));
+        var ms = fixZero(count%100);
+        stopwatch.innerHTML = min + ":" + sec + ":" + ms;
+      }, 10);
+    } else{
+      alert('Please cease the STOPWATCH first');
+    }
+  });
+  
+  pause.addEventListener('click',function(event){
+    if (running ==1 ){
+      running =0;
+      window.clearInterval(timer);
+    }else {
+      alert('The STOPWATCH is not running at all');
+    }
+  });
+  
+  reset.addEventListener('click',function(event){
+    running = 0;
+    count = 0;
+    window.clearInterval(timer);
+    stopwatch.innerHTML = "00:00:00";
+  });
+  
+}
+
 function fixZero(num){
-  var result = num;
+  var result = ''+num;
   if ( result.length < 2 )
     result = '0' + result;
   return result;
