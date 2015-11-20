@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+
+    <title>Helloo World</title>
+
+    <style>
+      .block {
+        border: 1px solid black;
+      }
+    </style>
+
+    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
+         so we use a script file. -->
+    <script src="app.js" defer></script>
+    <script src="clock.js" defer></script>
+	<script src="timer.js" defer></script>
+	<script src="alarm.js" defer></script>
+  </head>
+
+  <body>
+    <div class="block">
+    
+     <!-- This code is in the public domain. Enjoy! -->
+     <h1 id="clockTitle"></h1>
+    
+    </div>
+    <div class="block">
+		<h1>碼表功能</h1>
+		<div>
+			<b id='timerHour'></b>:<b id='timerMinute'></b>:<b id='timerSecond'></b>
+		</div>
+		<div>
+			<input id="timerStartButton" type="button" value="開始計時"></input>
+		</div>
+    </div>
+	<div class="block">
+		<h1>提醒功能</h1>
+		<input id="alarmHour" type="text" value="0"></input>小時<br><input id="alarmMinute" type="text" value="0"></input>分鐘<br><input id="alarmSecond" type="text" value="0"></input>秒<br>
+		<input id="alarmStartButton" type="button" value="開始倒數"></input>
+	</div>
+  </body>
+
+</html>
