@@ -2,6 +2,7 @@ window.addEventListener("load", function() {
   console.log("YenC's CLOCK");
   window.setInterval(update, 1000);
   stopWatch();
+  Alarm();
 });
 
 function getTime(){
@@ -81,6 +82,24 @@ function stopWatch(){
   });
   
 }
+
+function Alarm(){
+  var setAlarm = document.getElementById('alarm_set');
+  setAlarm.addEventListener('click',function(event){
+    var d = new Date();
+    var alarm_min = document.getElementById('alarm_min');
+    var alarm_sec = document.getElementById('alarm_sec');
+    var t_min = +alarm_min.value + d.getMinutes();
+    var t_sec = +alarm_sec.value + d.getSeconds();
+    d.setMinutes(t_min);
+    d.setSeconds(t_sec);
+    var alarm = navigator.mozAlarms.add(d,'ignoreTimezone');
+  });
+}
+
+navigator.mozSetMessageHandler("alarm",function(alarm){
+  new Notification("Timed OUT");
+});
 
 function fixZero(num){
   var result = ''+num;
