@@ -32,10 +32,11 @@
 
   </head>
 
-  <body onload="setInterval('currentTime()', 1000); show();">
+  <body>
     <!-- This code is in the public domain. Enjoy! -->
     <h1>SimpleClock</h1>
     <div id="clock">
+      <h2>Clock</h2>
       <div>
         <label id="time">Time</label>
       </div>
@@ -47,19 +48,31 @@
       </div>
     </div>
     <div id="stopwatch">
-      <div>
-        <label>Stop Watch</label>
-      </div>
+      <h2>Stopwatch</h2>
       <div>
         <label id="countTime">00:00:00</label>
       </div>
       <div>
-        <button onclick="start();">Start</button>
-        <button onclick="pause();">Pause</button>
-        <button onclick="reset();">Reset</button>
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
       </div>
     </div>
     <div id="alarm">
+      <h2>Alarm</h2>
+      <table>
+        <tr>
+          <td>Minutes:</td>
+          <td>Seconds:</td>
+        </tr>
+        <tr>
+          <td><input id="minute" value="0"></td>
+          <td><input id="second" value="5"></td>
+        </tr>
+        <tr>
+          <td><button id="alarm">Set</button></td>
+        </tr>
+      </table>
     </div>
    </div>
   </body>

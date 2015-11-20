@@ -8,8 +8,24 @@
     "60": "/icons/icon60x60.png",
     "128": "/icons/icon128x128.png"
   },
+    
   "developer": {
     "name": "Your name",
     "url": "http://example.com"
-  }
+  },
+    
+  "permissions": {
+    "desktop-notification": {
+      "description": "Needed for creating system notifications."
+    },
+      
+    "alarms": {
+      "description": "Required to schedule alarms"
+    }
+  },
+    
+  "messages": [
+    {"notification": "/index.html"},
+    { "alarm": "/index.html" }
+  ]
 }
