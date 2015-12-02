@@ -53,21 +53,31 @@ displayDate = function(){
 
 StopWatch = function(){
 	//StopWatch
-	this.min = 0;
-	this.sec = 0;
-    this.millisec = 0;
+	min = 0;
+	sec = 0;
+  millisec = 0;
 	isRunning = false;
 	stopWatch = document.getElementById('StopWatch');
+<<<<<<< HEAD
+
+	if(millisec=="0"||millisec=="1"||millisec=="2"||millisec=="3"||millisec=="4"||millisec=="5"||millisec=="6"||millisec=="7"||millisec=="8"||millisec=="9")
+        millisec = "0" + millisec;
+    if(sec=="0"||sec=="1"||sec=="2"||sec=="3"||sec=="4"||sec=="5"||sec=="6"||sec=="7"||sec=="8"||sec=="9")
+        sec = "0" + sec;
+    if(min=="0"||min=="1"||min=="2"||min=="3"||min=="4"||min=="5"||min=="6"||min=="7"||min=="8"||min=="9")
+        min = "0" + min;
+=======
     millisec = "0" + millisec;
     sec = "0" + sec;
     min = "0" + min;	
+>>>>>>> origin/master
 	var displayString = min +":"+sec +"."+millisec ;
 	stopWatch.textContent = displayString;
-	
+
 	Start = document.getElementById('Start');
 	Pause = document.getElementById('Pause');
 	Reset = document.getElementById('Reset');
-	
+
 	Start.addEventListener("click",StartClicked);
 	Pause.addEventListener("click",PauseClicked);
 	Reset.addEventListener("click",ResetClicked);
@@ -81,21 +91,21 @@ StartClicked = function(){
 }
 
 counting = function(){
-	this.millisec++;
-	if(this.millisec == 100) {
-		this.sec++;
-		this.millisec = 0;
+	millisec++;
+	if(millisec == 100) {
+		sec++;
+		millisec = 0;
     }
-	if(this.sec == 60) {
-		this.min++;
-		this.sec = 0;
+	if(sec == 60) {
+		min++;
+		sec = 0;
 	}
 	if(millisec=="0"||millisec=="1"||millisec=="2"||millisec=="3"||millisec=="4"||millisec=="5"||millisec=="6"||millisec=="7"||millisec=="8"||millisec=="9")
         millisec = "0" + millisec;
     if(sec=="0"||sec=="1"||sec=="2"||sec=="3"||sec=="4"||sec=="5"||sec=="6"||sec=="7"||sec=="8"||sec=="9")
         sec = "0" + sec;
     if(min=="0"||min=="1"||min=="2"||min=="3"||min=="4"||min=="5"||min=="6"||min=="7"||min=="8"||min=="9")
-        min = "0" + min;	
+        min = "0" + min;
 	var displayString = min +":"+sec +"."+millisec ;
 	stopWatch.textContent = displayString;
 }
@@ -113,84 +123,57 @@ ResetClicked = function(){
     millisec = 0;
 	clearInterval(timer);
 	isRunning = false;
+<<<<<<< HEAD
+	if(millisec=="0"||millisec=="1"||millisec=="2"||millisec=="3"||millisec=="4"||millisec=="5"||millisec=="6"||millisec=="7"||millisec=="8"||millisec=="9")
+        millisec = "0" + millisec;
+    if(sec=="0"||sec=="1"||sec=="2"||sec=="3"||sec=="4"||sec=="5"||sec=="6"||sec=="7"||sec=="8"||sec=="9")
+        sec = "0" + sec;
+    if(min=="0"||min=="1"||min=="2"||min=="3"||min=="4"||min=="5"||min=="6"||min=="7"||min=="8"||min=="9")
+        min = "0" + min;
+=======
     millisec = "0" + millisec;
     sec = "0" + sec;
     min = "0" + min;
+>>>>>>> origin/master
 	var displayString = min +":"+sec +"."+millisec ;
 	stopWatch.textContent = displayString;
 }
 
 alarm = function(){
 	//alarm
-	this.hour = document.getElementById('hour');
-	this.minute = document.getElementById('minute');
+	hour = document.getElementById('hour');
+	minute = document.getElementById('minute');
 	for(var i=0;i<24;i++){
 		var temp = document.createElement("option");
 		temp.value = i;
-		this.hour.add(temp);
+		hour.add(temp);
 		if (i < 10){
 			i = '0'+i;
 		}
 		temp.text = i;
-
 	}
 	for(var i=0;i<60;i++){
 		var temp = document.createElement("option");
 		temp.value = i;
-		this.minute.add(temp);
+		minute.add(temp);
 		if (i < 10){
 			i = '0'+i;
 		}
 		temp.text = i;
 	}
-	this.hour.options[new Date().getHours()].selected = true;
-	this.minute.options[new Date().getMinutes()].selected = true;
-	
-	this.setAlarmButton = document.getElementById('set_alarm');
-	this.setAlarmButton.addEventListener("click",SetAlarmButton.bind(this));
-	
-	navigator.mozSetMessageHandler("alarm", function (mozAlarm) { 
-		var options = {
-			icon: "/icons/icon16x16.png",
-			body: "Alarm!!"
-		}
-		var notice = new Notification("Alarm triggered",options);
-		setTimeout(notice.close.bind(notice), 4000); 
+
+	setAlarmButton = document.getElementById('set_alarm');
+	setAlarmButton.addEventListener("click",SetAlarmButton.bind(this));
+
+	navigator.mozSetMessageHandler("alarm", function (alarm) {
+		new Notification("ALARM!!");
 	});
 }
 
 SetAlarmButton = function(){
 	var Now = new Date();
-	var alarmTime = new Date();
-	alarmTime.setHours(hour.options[hour.selectedIndex].value);
-	alarmTime.setMinutes(minute.options[minute.selectedIndex].value);
-	alarmTime.setSeconds(0);
-	alarmTime.setMilliseconds(0);
-	if(Now.getHours() > alarmTime.getHours() ){
-		alarmTime.setDate(Now.getDate() + 1);
-	}
-	else if(Now.getHours() == alarmTime.getHours()) {
-		if(Now.getMinutes() > alarmTime.getMinutes()) {
-			alarmTime.setDate(Now.getDate() + 1);
-	    }
-	}
-	var data = {};
-	var request = navigator.mozAlarms.add(alarmTime, "ignoreTimezone", data);
-	request.onsuccess = function () {
-		console.log("The alarm has been scheduled");
-		var options = {
-			icon: "/icons/icon16x16.png",
-			body: "alarm set"
-	    };
-		var notice = new Notification("Alarm Set!",options);
-		setTimeout(notice.close.bind(notice), 4000); 
-	};
-	request.onerror = function () { 
-		console.log("An error occurred: " + this.error.name);
-	};
+	var setTime = new Date();
+	setTime.setHours(hour.options[hour.selectedIndex].value);
+	setTime.setMinutes(minute.options[minute.selectedIndex].value);
+	var request = navigator.mozAlarms.add(setTime, "ignoreTimezone");
 }
-
-
-
-
-
