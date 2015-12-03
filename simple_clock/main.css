@@ -1,0 +1,53 @@
+html{
+  font-family: Garamond;
+}
+#clock{
+  font-size: 25px;
+  font-weight: bold;
+}
+#output{
+  font-size: 25px;
+  background-color:gray;
+  text-align: center;
+  margin:0;
+  font-weight: normal;
+}
+button{
+  font-family: Garamond;
+  width:60px;
+  position:relative;
+  top:20px;
+  bottom:5px;
+  right:10px;
+  margin-left:8px;
+  font-weight: bold;
+  border-radius:50px;
+}
+button:hover{
+  
+}
+#monitor{
+  background-color: gray;
+  width:200px;
+}
+#st{
+  text-align: center;
+  margin:0;
+  position: relative;
+  top:5px;
+  font-weight: normal;
+  }
+#alarmtext{
+  font-weight: bold; 
+  font-family: "DFKai-sb"
+
+}
+#setalarm{
+  width:75px;
+  position:relative;
+  top:0;
+}
+p{
+  font-weight: bold;
+
+}
