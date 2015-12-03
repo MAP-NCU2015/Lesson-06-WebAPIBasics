@@ -1,49 +1,41 @@
 'use strict';
 (function(exports){
 	var clock = function(){
-		
-	}
-	
+	};
+
 	clock.prototype = {
 		startclock(){
-			this.datetime();
-			setInterval(this.datetime.bind(this),1000);
+			setInterval(this.setClock.bind(this),100); //由於改成12小時制，需要花時間，因此不以0.1秒做一次更動
 		},
-		
-		datetime(){
+
+		setClock(){
 			var now = new Date();
-			var day = now.getDay();
-			switch(day){
-				case 1:
-                    day = '(一)';break;
-                case 2:
-                    day = '(二)';break;
-                case 3:
-                    day = '(三)';break;
-                case 4:
-                    day = '(四)';break;
-                case 5:
-                    day = '(五)';break;
-                case 6:
-                    day = '(六)';break;
-                case 0:
-                    day = '(日)';break;
-                default:
-                    break;
-            }
-		
-		$('#Date').text(now.getFullYear() + "/" + this.modify(now.getMonth()+1) + "/" + this.modify(now.getDate()) + " " + day);
-		$('#UTC').text("UTC:" + now.getTimezoneOffset()/-60);
-		$('#Time').text(this.modify(now.getHours()) + ":" + this.modify(now.getMinutes()) + ":" + this.modify(now.getSeconds()));
-		
+			var day;
+			var hour;
+			var week = new Array(7);
+			week[0] = "週日";
+			week[1] = "週一";
+			week[2] = "週二";
+			week[3] = "週三";
+			week[4] = "週四";
+			week[5] = "週五";
+			week[6] = "週六";
+			if(now.getHours() >= 12){
+				day = "下午";
+				hour = now.getHours() - 12;
+			}else{
+				day = "上午"
+				hour = now.getHours();
+			}
+			$('#time').text(this.modify(hour) + ":" + this.modify(now.getMinutes()) + ":" + this.modify(now.getSeconds())+ " " + day);
+			$('#date').text(now.getFullYear() + "年" + (now.getMonth()+1) + "月" + now.getDate()+ "日  " + week[now.getDay()]);
+			$('#utc').text("UTC: " + (-(now.getTimezoneOffset()/60)));
 		},
-		
+
 		modify(num){
 			var n = num;
-            return n < 10? "0"+ n : n;
+			return n < 10? "0"+ n : n;
 		}
-		
-	};
-	
+	}
 	exports.clock = clock;
 })(window);

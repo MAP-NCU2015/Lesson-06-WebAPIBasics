@@ -1,53 +1,60 @@
 'use strict';
 (function(exports) {
-    var stopwatch = function() {
-        this.startPause = 0;
-        this.startTime = 0;
-        this.pauseTime = 0;
-    }
+    var timer = {
+        min:0,
+        sec:0,
+        millisec:0
+    };
+
+    var stopwatch = function(){
+        this.runstopwatch = false;
+    };
 
     stopwatch.prototype = {
-
-        startstopwatch() {
-			//計算暫停時間
-            if(this.startPause !== 0 && this.startTime !== 0) {
-                this.pauseTime += new Date().getTime() - this.startPause;
+        start(){
+            if(this.runstopwatch == false){
+                this.runstopwatch = true;
+                this.interval2 = setInterval(this.runtime.bind(this),10);
             }
-            if(this.startTime == 0) {
-                this.startTime = new Date().getTime();
+        },
+
+        pause(){
+            if(this.runstopwatch){
+                this.runstopwatch = false;
+                clearInterval(this.interval2);
             }
-			this.interval = setInterval(this.go.bind(this), 10);
         },
 
-        pause() {
-			clearInterval(this.interval);
-            this.startPause = new Date().getTime();
-            this.run = false;
+        reset(){
+            if(this.runstopwatch == false){
+                timer.min = 0;
+                timer.sec = 0;
+                timer.millisec = 0;
+                $('#timer').text(this.modify(timer.min) + ":" + this.modify(timer.sec) + ":" + this.modify(timer.millisec));
+            }
         },
 
-        reset() {
-			clearInterval(this.interval);
-			this.startTime = 0;
-			this.startPause = 0;
-			this.pauseTime = 0;
-			$('#timer').text("00:00:00");
-        },
-		
-		//顯示計時
-        go() {
-            var timernow = new Date().getTime() - this.startTime - this.pauseTime;
-            var milliseconds = timernow % 1000;
-            var second = Math.floor((timernow / 1000) % 60);
-            var minute = Math.floor((timernow / (60 * 1000)) % 60);
-            $('#timer').text(this.modify(minute) + ":" + this.modify(second) + ":" + this.modify(milliseconds));
+        runtime(){
+          if(timer.millisec == 99){
+              timer.millisec = 0;
+              timer.sec += 1;
+          }else if(timer.sec == 59){
+              timer.sec = 0;
+              timer.min += 1;
+          }else if(timer.min == 59){
+              timer.min = 0;
+          }else{
+              timer.millisec += 1;
+          }
+
+          $('#timer').text(this.modify(timer.min) + ":" + this.modify(timer.sec) + ":" + this.modify(timer.millisec));
         },
 
-        modify(num) {
+        modify(num){
             var n = num;
-            if (n > 99)
-                n = Math.floor(n / 10);
             return n < 10? "0"+ n : n;
         }
-    };
+
+    }
     exports.stopwatch = stopwatch;
 })(window);

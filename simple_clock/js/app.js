@@ -1,29 +1,31 @@
-/*Create clock object*/
 var clock = new clock();
 $(document).ready(function() {
-  clock.startclock();
+    clock.startclock();
 });
 
-/*Creat stopwatch object*/
 var stopwatch = new stopwatch();
-$('#start').click(function() {
-  stopwatch.startstopwatch();
+
+$('#stopwatch_start').click(function(){
+  stopwatch.start();
 });
 
-$('#pause').click(function() {
+$('#stopwatch_pause').click(function(){
   stopwatch.pause();
 });
 
-$('#reset').click(function() {
+$('#stopwatch_reset').click(function(){
   stopwatch.reset();
 });
 
-/*Creat alarm object*/
 var alarm = new alarm();
+
 $('#alarm_start').click(function(){
-  alarm.startAlarm();
+  var min = $('#alarm_minute').val();
+  var sec = $('#alarm_second').val();
+  alarm.setalarm(min,sec);
+  alarm.start();
 });
 
 $('#alarm_cancel').click(function(){
-  alarm.cancelAlarm();
+  alarm.cancel();
 });
