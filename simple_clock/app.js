@@ -116,6 +116,7 @@ function spawnNotification(theBody,theIcon,theTitle) {
 	}
 	var n = new Notification(theTitle,options);
 }
+
 document.getElementById('setalarm').onclick=function(){
 	var setHr=document.getElementById("sethour");
 	var setMin=document.getElementById("setminute");
@@ -129,12 +130,11 @@ document.getElementById('setalarm').onclick=function(){
 		Notification.requestPermission();
 		
 		if(timeofnow.getHours()===alarmHour&&timeofnow.getMinutes()===alarmMin&&timeofnow.getSeconds()===0){
+
 	      if (Notification && Notification.permission === "granted") {
 	      	spawnNotification("鬧鐘響囉!","icon/icon16x16.png","鬧鐘通知");
 	  	  }
-	      alert("鬧鐘響囉");
 		}	
 	}
-var alarmtimer=setInterval(alarmclock,1000);
 }
 alarm();
