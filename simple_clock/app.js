@@ -1,3 +1,10 @@
+addZero = function (num){
+	if(num < 10){
+		num = "0" + num;
+	}
+	return num;
+}
+
 clock = function(){
 	//main clock
 	Clock = document.getElementById('Clock');
@@ -38,34 +45,21 @@ displayDate = function(){
 			day = '星期六';
 			break;
 	}
-	if(hour < 10) {
-		hour = '0' + hour;
-	}
-	if(minute < 10) {
-		minute = '0' + minute;
-	}
-	if(second < 10) {
-		second = '0' + second;
-	}
-	var display =  "Date : "+year+"/"+month+"/"+date+" Time : "+hour+":"+minute+":"+second+" "+day+" 目前時區為 : UTC+"+timezone;
+
+	var display =  "Date : " + year + "/" + month + "/"+date + " Time : " + addZero(hour) + ":"+addZero(minute) + ":" + addZero(second) + " " + day + " 目前時區為 : UTC+" + timezone;
 	Clock.textContent = display;
 }
 
+var min = 0;
+var sec = 0;
+var millisec = 0;
+var isRunning = false;
+var displayString;
+
 StopWatch = function(){
 	//StopWatch
-	min = 0;
-	sec = 0;
-  millisec = 0;
-	isRunning = false;
 	stopWatch = document.getElementById('StopWatch');
-
-	if(millisec < 10)
-      millisec = "0" + millisec;
-  if(sec <10)
-      sec = "0" + sec;
-  if(min <10)
-      min = "0" + min;
-	var displayString = min +":"+sec +"."+millisec ;
+	displayString = "00:00.00";
 	stopWatch.textContent = displayString;
 
 	Start = document.getElementById('Start');
@@ -75,12 +69,12 @@ StopWatch = function(){
 	Start.addEventListener("click",StartClicked);
 	Pause.addEventListener("click",PauseClicked);
 	Reset.addEventListener("click",ResetClicked);
+	setInterval(counting,10);
 }
 
 StartClicked = function(){
 	if(isRunning == false){
 		isRunning = true;
-		timer = setInterval(counting,10);
 	}
 }
 
@@ -95,20 +89,13 @@ counting = function(){
 			min++;
 			sec = 0;
 		}
-		if(millisec=="0"||millisec=="1"||millisec=="2"||millisec=="3"||millisec=="4"||millisec=="5"||millisec=="6"||millisec=="7"||millisec=="8"||millisec=="9")
-	      millisec = "0" + millisec;
-	  if(sec=="0"||sec=="1"||sec=="2"||sec=="3"||sec=="4"||sec=="5"||sec=="6"||sec=="7"||sec=="8"||sec=="9")
-	      sec = "0" + sec;
-	  if(min=="0"||min=="1"||min=="2"||min=="3"||min=="4"||min=="5"||min=="6"||min=="7"||min=="8"||min=="9")
-	      min = "0" + min;
-		var displayString = min +":"+sec +"."+millisec ;
+		displayString = addZero(min) + ":" +addZero(sec) + "."+ addZero(millisec) ;
 		stopWatch.textContent = displayString;
 	}
 }
 
 PauseClicked = function(){
 	if(isRunning == true){
-		clearInterval(timer);
 		isRunning = false;
 	}
 }
@@ -117,15 +104,8 @@ ResetClicked = function(){
 	min = 0;
 	sec = 0;
   millisec = 0;
-	clearInterval(timer);
 	isRunning = false;
-	if(millisec < 10)
-      millisec = "0" + millisec;
-  if(sec <10)
-      sec = "0" + sec;
-  if(min <10)
-      min = "0" + min;
-	var displayString = min +":"+sec +"."+millisec ;
+	displayString = "00:00.00" ;
 	stopWatch.textContent = displayString;
 }
 
@@ -137,24 +117,16 @@ alarm = function(){
 		var temp = document.createElement("option");
 		temp.value = i;
 		hour.add(temp);
-		if (i < 10){
-			i = '0'+i;
-		}
-		temp.text = i;
+		temp.text = addZero(i);
 	}
 	for(var i=0;i<60;i++){
 		var temp = document.createElement("option");
 		temp.value = i;
 		minute.add(temp);
-		if (i < 10){
-			i = '0'+i;
-		}
-		temp.text = i;
+		temp.text = addZero(i);
 	}
-
 	setAlarmButton = document.getElementById('set_alarm');
 	setAlarmButton.addEventListener("click",SetAlarmButton.bind(this));
-
 	navigator.mozSetMessageHandler("alarm", function (alarm) {
 		new Notification("ALARM!");
 	});
@@ -163,6 +135,7 @@ alarm = function(){
 SetAlarmButton = function(){
 	var Now = new Date();
 	var setTime = new Date();
+
 	setTime.setHours(hour.options[hour.selectedIndex].value);
 	setTime.setMinutes(minute.options[minute.selectedIndex].value);
 	setTime.setSeconds(0);
