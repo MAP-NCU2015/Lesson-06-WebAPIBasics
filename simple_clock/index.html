@@ -1,26 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <link rel="icon" type="image/png" href="icons/icon-128.png">
+    <title>Clock</title>
+</head>
 
-    <title>Hello World</title>
+<body data-theme="b" data-content-theme="b">
+<div class="ui-page-theme-b" data-role="page">
+    <div data-role="tabs" id="tabs">
 
-    <style>
-      body {
-        border: 1px solid black;
-      }
-    </style>
+        <div id="clock" class="ui-content ui-body-b" role="main">
+            <h1>時鐘</h1>
+            <div id="time"></div>
+            <span id="date" class="ui-block-b"></span>
+            </br>
+            <span id="utc" class="ui-block-f"></span>
+        </div>
 
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
-    <script src="app.js" defer></script>
+        <div id="stopwatch" class="ui-content ui-body-b" role="main">
+            <h1>碼表</h1>
+            <div id="timer" class="ui-grid-a">00:00:00</div>
+            <button id="stopwatch_start" class="ui-btn ui-corner-all ui-btn-active">開始</button>
+            <button id="stopwatch_pause" class="ui-btn ui-corner-all ui-btn-active">暫停</button>
+            <button id="stopwatch_reset" class="ui-btn ui-corner-all ui-btn-active">重置</button>
+        </div>
 
-  </head>
+        <div id="alarm" class="ui-content ui-body-d" role="main">
+            <h1>鬧鐘</h1>
+            <div id="alarm_time" class="ui-grid-a">00:00</div>
+            <form>
+                分 :
+                <select id="alarm_minute" ></select>
+                秒 :
+                <select id="alarm_second"></select>
+            </form>
+            <button id="alarm_start" class="ui-btn ui-corner-all ui-btn-active">開始</button>
+			<button id="alarm_cancel" class="ui-btn ui-corner-all ui-btn-active">取消</button>
+        </div>
 
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
+        <div class="ui-navbar" data-role="navbar">
+            <ul>
+                <li><a href="#clock" class="ui-btn-active" data-ajax="false">時鐘</a></li>
+                <li><a href="#stopwatch" data-ajax="false">碼表</a></li>
+                <li><a href="#alarm" data-ajax="false">鬧鐘</a></li>
+            </ul>
+        </div>
 
+</body>
+<footer>
+    <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/clock.js" defer></script>
+    <script src="js/stopwatch.js" defer></script>
+    <script src="js/alarm.js" defer></script>
+    <script src="js/alarmset.js" defer></script>
+    <script src="js/app.js" defer></script>
+</footer>
 </html>

@@ -1,0 +1,24 @@
+#time{
+  text-align: center;
+  font-size: 40px;
+}
+
+#date{
+  font-size:24px;
+}
+
+#utc{
+  position: relative;
+  left:5%;
+  font-size:24px;
+}
+
+#timer{
+  text-align: center;
+  font-size:40px;
+}
+
+#alarm_time{
+  text-align: center;
+  font-size:40px;
+}
