@@ -11,7 +11,6 @@
 <div class="ui-page-theme-b" data-role="page">
     <div data-role="tabs" id="tabs">
 
-        <!-- Clock Session-->
         <div id="clock" class="ui-content ui-body-b" role="main">
             <h1>時鐘</h1>
             <div id="time"></div>
@@ -20,16 +19,14 @@
             <span id="utc" class="ui-block-f"></span>
         </div>
 
-        <!-- Stop Watch Session-->
         <div id="stopwatch" class="ui-content ui-body-b" role="main">
             <h1>碼表</h1>
             <div id="timer" class="ui-grid-a">00:00:00</div>
-            <button id="stopwatch_start" class="ui-btn ui-corner-all">開始</button>
-            <button id="stopwatch_pause" class="ui-btn ui-corner-all">暫停</button>
-            <button id="stopwatch_reset" class="ui-btn ui-corner-all">重新開始</button>
+            <button id="stopwatch_start" class="ui-btn ui-corner-all ui-btn-active">開始</button>
+            <button id="stopwatch_pause" class="ui-btn ui-corner-all ui-btn-active">暫停</button>
+            <button id="stopwatch_reset" class="ui-btn ui-corner-all ui-btn-active">重置</button>
         </div>
 
-        <!-- Countdown Session-->
         <div id="alarm" class="ui-content ui-body-d" role="main">
             <h1>鬧鐘</h1>
             <div id="alarm_time" class="ui-grid-a">00:00</div>
@@ -43,8 +40,7 @@
 			<button id="alarm_cancel" class="ui-btn ui-corner-all ui-btn-active">取消</button>
         </div>
 
-        <!-- Tab list in Navigation -->
-        <div id="select" role="navigation" class="ui-navbar" data-role="navbar">
+        <div class="ui-navbar" data-role="navbar">
             <ul>
                 <li><a href="#clock" class="ui-btn-active" data-ajax="false">時鐘</a></li>
                 <li><a href="#stopwatch" data-ajax="false">碼表</a></li>

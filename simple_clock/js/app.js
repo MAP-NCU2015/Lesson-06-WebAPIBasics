@@ -20,9 +20,9 @@ $('#stopwatch_reset').click(function(){
 var alarm = new alarm();
 
 $('#alarm_start').click(function(){
-  var min = $('#alarm_minute').val();
+  var min = $('#alarm_minute').val(); //傳入使用者選擇的鬧鐘時間
   var sec = $('#alarm_second').val();
-  alarm.setalarm(min,sec);
+  alarm.setalarm(min,sec); //丟給鬧鐘
   alarm.start();
 });
 
