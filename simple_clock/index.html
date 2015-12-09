@@ -4,11 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Simple_Clock</title>
 
     <style>
-      body {
+      div.border {
         border: 1px solid black;
+        padding: 8px;
+      }
+      div.empty {
+        padding: 5px;
       }
     </style>
 
@@ -20,7 +24,30 @@
 
   <body>
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <div align = "center" class="border">
+      <h1 id = "clock"></h1>
+    </div>
+    
+    <div class="empty">
+    </div>
+    
+    <div align = "center" class="border">
+      <h2>StopWatch<h2>
+      <h2 id="timer">00:00.00</h2>
+      <button onclick = "start()">Start</button>
+      <button onclick = "stop()">Pause</button>
+      <button onclick = "reset()">Reset</button>
+    </div>
+    
+    <div class="empty">
+    </div>
+    
+    <div align = "center" class="border">
+      <input type="number" id="alarm_min" value="0"> minutes</input> <br>
+      <input type="number" id="alarm_sec" value="0"> seconds</input> <br>
+      <button id="addalarm">set alarm</button>
+    </div>
+
   </body>
 
 </html>
