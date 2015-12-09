@@ -110,7 +110,8 @@ alarm_main.addEventListener('click' , function(event) {
   request.onerror = function () { 
     console.log("An error occurred: " + this.error.name);
   };
-  navigator.mozSetMessageHandler("alarm", function (MozAlarm) { 
+});
+
+navigator.mozSetMessageHandler("alarm", function (MozAlarm) { 
     var n = new Notification("Simple_Clock", { body: "Alarm~!" });
   });
-});
