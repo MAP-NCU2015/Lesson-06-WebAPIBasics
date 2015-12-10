@@ -4,23 +4,65 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
-
+    <title>Alarm</title>
     <style>
-      body {
-        border: 1px solid black;
-      }
+        #time {
+            position: relative;
+            left: 55%;
+            top:50%;
+            color: black;
+            font-size: 40px;
+        }
+        h2 {
+            position: relative;
+            left: 45%;
+            top: 30%;
+            font-size: 40px;
+            color: black;
+        }
+        button{
+            position: relative;
+            left: 45%;
+            font-size: 20px;
+        }
+        #show_setAlarm{
+            position: relative;
+            left: 55%;
+            color: black;
+            font-size: 30px;
+        }
+        div {
+            position: relative;
+            left: 55%;
+            color: black;
+            font-size: 30px;
+        }
+        
     </style>
 
     <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
          so we use a script file. -->
-    <script src="app.js" defer></script>
+    <script src="js/timeclock.js" defer></script>
 
   </head>
 
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+  <body onload="getTime()">
+      <header id="header">	
+				<nav id="nav">
+					<ul>
+						<li>時鐘</li>
+                        <li><a href="stopwatch.html">碼表</a></li>
+					</ul>
+				</nav>
+    </header>
+    <h2>現在時間是：</h2>
+    <div id="time"></div>
+      <button id="set_alarm" onclick="setAlarm()">設定鬧鐘</button>
+      
+      <div id="show_setAlarm"></div>
+            <div id="t1"></div>
+      <div id="t2"></div>
+    
   </body>
 
 </html>

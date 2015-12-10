@@ -11,5 +11,11 @@
   "developer": {
     "name": "Your name",
     "url": "http://example.com"
+  },
+  "permissions": {
+  "desktop-notification": {
+    "description": "Needed for creating system notifications."
   }
+},
+"messages": [{"notification": "path/to/your/index.html"}]
 }
