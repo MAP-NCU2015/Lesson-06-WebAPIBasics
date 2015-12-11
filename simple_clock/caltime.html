@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body bgcolor="#DDD">
+	<style>      
+		#demo {                        /* Style apply to element with id="clock" */
+			font: bold 24pt sans;         /* Use a big bold font */      
+		}		
+    </style>
+	
+	<div align="center"><center>
+		
+		<p id="demo">00:00.00</p>
+		<button onClick="myTimer = setInterval(myCounter, 10)">Start!</button><br><br>
+		<button onClick="clearInterval(myTimer)">Pause!</button><br><br>
+		<button onClick="re = reset()">Reset</button><hr>
+		<li><a href="index.html" title="back">back>></li>
+	</center></div>
+	
+    <script>
+       var c = 0, s = 0, m = 0;
+       function myCounter() {
+          c++;
+          if(c==100)
+          {
+              s++;
+              c=0;
+          }
+           if(s==60)
+           {
+              m++;
+               s=0;
+           }
+           document.getElementById("demo").innerHTML = m + ":" + s + "." +c;
+       }
+        function reset()
+        {
+            s=0;
+            m=0;
+            c=0;
+            document.getElementById("demo").innerHTML = m + ":" + s + "." +c;
+        }
+    </script> 
+
+    
+</body>
+</html>

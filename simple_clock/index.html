@@ -1,26 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
-
-    <style>
-      body {
-        border: 1px solid black;
-      }
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="VI60_defaultClientScript" content="JavaScript">
+	<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+	<meta name="ProgId" content="FrontPage.Editor.Document">
+	<title>JavaScript 鬧鐘</title>
+	<script src="app.js" defer></script>
+	<style>
+		#atime {                        /* Style apply to element with id="clock" */
+			font: bold 20pt sans;         /* Use a big bold font */      
+		}	
+		#demo {                        /* Style apply to element with id="clock" */
+			font: bold 24pt sans;         /* Use a big bold font */      
+		}		
     </style>
+</head>
 
-    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
-         so we use a script file. -->
-    <script src="app.js" defer></script>
+<body bgcolor="#DDD" onload="init();return true">
 
-  </head>
-
-  <body>
-    <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
-  </body>
-
+<hr>
+<form method="POST" name="setform">
+	<div align="center"><center>
+	<p>    
+		<p id="now">00</p><hr>
+		<p id="tzon">00</p><hr>  
+		鬧鐘時間
+		<!--<input type="text" size="11" name="atime" onfocus="blur()"> -->
+		<p id="atime">0:00:00</p><br>    
+		Alarm
+		<input type="radio" name="alarm">
+		On 
+		<input type="radio" checked name="alarm">
+		Off
+		
+	</p>
+	</center></div><hr>
+	
+	<div align="center"><center>
+	<p>    
+		設定鬧鐘時間 : Hour <input type="text" size="2" name="sethour"> 
+		Minute <input type="text" size="2" name="setminute">
+		
+		<input type="button" name="button1" value="Set" onclick="setup()"><br>
+	</p>
+	</center></div>
+</form>
+<hr>
+	
+	<div align="center"><center>
+		<p>Stopwatch</p>
+		<p id="demo">00:00.00</p>
+		<button onClick="start()">Start!</button>
+		<button onClick="stop()">Pause!</button>
+		<button onClick="re = reset()">Reset</button><hr>
+	</center></div>
+</body>
 </html>
