@@ -69,25 +69,44 @@ function initArray()
 	for(var i=0;i<this.length;i++)
 		this[i+1]=initArray.arguments[i] 
 }
-var c = 0, s = 0, mm = 0;
-       function myCounter() {
-          c++;
-          if(c==100)
-          {
-              s++;
-              c=0;
-          }
-           if(s==60)
-           {
-              mm++;
-               s=0;
-           }
-           document.getElementById("demo").innerHTML = mm + ":" + s + "." +c;
-       }
-        function reset()
-        {
-            s=0;
-            mm=0;
-            c=0;
-            document.getElementById("demo").innerHTML = mm + ":" + s + "." +c;
-        }
+var c = 0, s = 0, mm = 0, ready=0;
+function myCounter() 
+{
+	
+		c++;
+		if(c==100)
+		{
+			s++;
+			c=0;
+		}
+		if(s==60)
+		{
+			mm++;
+			s=0;
+		}
+		document.getElementById("demo").innerHTML = mm + ":" + s + "." +c;
+	
+}
+function start()
+{
+	if(ready==0)
+	{
+		ready=1;
+		myTimer = setInterval(myCounter, 10);		
+	}
+}
+function stop()
+{
+	if(this.ready == 1)
+	{
+		this.ready=0;
+		clearInterval(myTimer);
+	}
+}
+function reset()
+{
+    s=0;
+    mm=0;
+    c=0;
+    document.getElementById("demo").innerHTML = mm + ":" + s + "." +c;
+}
