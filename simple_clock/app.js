@@ -1,175 +1,119 @@
-'use strict';
+var startflag;
+var cc=0;
+var ss=0;
+var mm=0;
+var currTime;
+var alarmTime;
+start=function(){
+	setTime();
+	startflag=false;
+	timer();
+	alarm();
+}
 
-(function(exports) {
-  var clock = function() {
-    this.setClockTime();
-    var intervalTime=window.setInterval(this.setClockTime,500);
-    var intervalTimer;
-    var startflag=false;
-    this.reset(intervalTimer);
-    document.getElementById('start').addEventListener('click',(function(event) {
+setTime=function(){
+	var current = new Date();
+	var h = current.getHours();
+	var m = current.getMinutes();
+	var s = current.getSeconds();
+	var yr = current.getFullYear();
+	var mon = current.getMonth()+1;
+	var date = current.getDate();
+	var day = current.getDay(day);
+	m = addO(m);
+	s = addO(s);
+	mon = addO(mon);
+	date = addO(date);
+	currTime=current;
+	var d;
+	if(day==0)
+		d="Sun.";
+	else if(day==1)
+		d="Mon.";
+	else if(day==2)
+		d="Tue.";
+	else if(day==3)
+		d="Wed.";
+	else if(day==4)
+		d="Thu.";
+	else if(day==5)
+		d="Fri.";
+	else if(day==6)
+		d="Sat.";
+	document.getElementById('clock').innerHTML = yr+"/"+mon+"/"+date+" "+d+" "+h+":"+m+":"+s;
+	if(alarmTime==currTime)
+		console.log("Time's Up!");
+	var t = setTimeout(setTime, 500);
+}
+addO=function(i) {
+	if(i=="0"||i=="1"||i=="2"||i=="3"||i=="4"||i=="5"||i=="6"||i=="7"||i=="8"||i=="9")
+        i="0"+i;
+	return i;
+}
+timer=function(){
+	console.log("startflag="+startflag);
+	document.getElementById('start').addEventListener('click',function(event) {
       if(startflag == false){
-        intervalTimer=window.setInterval(this.start,10);
+        Timer=setInterval(startTimer, 10);
         startflag=true;
       }
-    }).bind(this));
-    document.getElementById('stop').addEventListener('click',(function(event) {
-      this.stop(intervalTimer);
-      startflag = false;
-    }).bind(this));
-    document.getElementById('reset').addEventListener('click',(function(event) {
-      this.reset(intervalTimer);
-      startflag = false;
-    }).bind(this));
-  };
+    });
+	document.getElementById('stop').addEventListener('click',function(event) {
+		clearInterval(Timer);
+		startflag=false;
+    });
+	document.getElementById('reset').addEventListener('click',function(event) {
+		stop(Timer);
+		document.getElementById('timer').innerHTML = "00:00.00";
+		startflag=false;
+    });
+}
+startTimer=function(){
+	cc++;
+	if(cc==100){
+		cc=0;
+		ss++;
+	}
+	if(ss==60){
+		ss=0;
+		mm++;
+	}
+	cc=addO(cc);
+	ss=addO(ss);
+	mm=addO(mm);
+	document.getElementById('timer').innerHTML = mm+":"+ss+"."+cc;
+}
 
-  var time = function() {
-    this.init();
-    document.getElementById('setalarm').addEventListener('click',(function(event) {
-      this.setalarm();
-    }).bind(this));
-  };
-  var mm=0;
-  var ss=0;
-  var cc=0;
+alarm=function(){
+	addOptions();
+    document.getElementById('setAlarm').addEventListener('click',function(event) {
+		setAlarm();
+		console.log("Alarm set.");
+	});
+}
 
-  clock.prototype = {
-    setClockTime() {
-      var current = new Date();
-      var year = current.getFullYear();
-      var month = current.getMonth()+1;
-      var date = current.getDate();
-      var hour = current.getHours();
-      var minute = current.getMinutes();
-      var second = current.getSeconds();
-      var day = current.getDay(day);
-      var offset = (current.getTimezoneOffset()/60)*(-1);
-      if(offset >= 0)
-        offset = "+" + offset;
-      if(month < 10)
-        month = "0" + month;
-      if(minute < 10)
-        minute = "0" + minute;
-      if(second < 10)
-        second = "0" + second;
-      switch(day)
-      {
-        case 0:
-          day = "Sun.";
-          break;
-        case 1:
-          day = "Mon.";
-          break;
-        case 2:
-          day = "Tue.";
-          break;
-        case 3:
-          day = "Wed.";
-          break;
-        case 4:
-          day = "Thu.";
-          break;
-        case 5:
-          day = "Fri.";
-          break;
-        case 6:
-          day = "Sat.";
-          break;
+addOptions=function(){
+      min = document.getElementById('minute');
+      for(var i=0;i<60;i++){
+		  i=addO(i);
+		  min.add(new Option(i,i));
       }
-	  document.getElementById('clock').innerHTML= year + "/" + month + "/" + date + " " + day + " " +  hour + ":" + minute + ":" + second + " GMT" + offset;
-    },
-
-    check(i) {
-      if(i < 10)
-        i = "0" + i;
-      return i;
-    },
-
-    start() {
-      cc++;
-      if(cc==100){
-        ss++;
-        cc=0;
+      sec = document.getElementById('second');
+      for(var i=0;i<60;i++){
+		  i=addO(i);
+		  sec.add(new Option(i,i));
       }
-      if(ss==60){
-        mm++;
-        ss=0;
-      }
-      if(mm=="0"||mm=="1"||mm=="2"||mm=="3"||mm=="4"||mm=="5"||mm=="6"||mm=="7"||mm=="8"||mm=="9")
-        mm="0"+mm;
-      if(ss=="0"||ss=="1"||ss=="2"||ss=="3"||ss=="4"||ss=="5"||ss=="6"||ss=="7"||ss=="8"||ss=="9")
-        ss = "0" + ss;
-      if(cc=="0"||cc=="1"||cc=="2"||cc=="3"||cc=="4"||cc=="5"||cc=="6"||cc=="7"||cc=="8"||cc=="9")
-        cc = "0" + cc;
-      document.getElementById('timer').innerHTML= mm+":"+ss+"."+cc;
-    },
+}
 
-    stop(intervalTimer) {
-      clearInterval(intervalTimer);
-    },
-
-    reset(intervalTimer) {
-      this.stop(intervalTimer);
-      mm=0;
-      ss=0;
-      cc=0;
-      mm=this.check(mm);
-      ss=this.check(ss);
-      cc=this.check(cc);
-      document.getElementById('timer').innerHTML= mm + ":" + ss + "." + cc;
-    }
-  };
-
-  time.prototype = {
-    init() {
-      this.minute = document.getElementById('minute');
-      for(var i=0;i<=59;i++){
-        var tmp = document.createElement('option');
-        tmp.value = i;
-        if(i < 10)
-          i = "0" + i;
-        tmp.text = i;
-        this.minute.add(tmp);
-      }
-      this.second = document.getElementById('second');
-      for(var i=0;i<=59;i++){
-        var tmp = document.createElement('option');
-        tmp.value = i;
-        if(i < 10)
-          i = "0" + i;
-        tmp.text = i;
-        this.second.add(tmp);
-      }
-      navigator.mozSetMessageHandler('time', function (mozAlarms) {
-        var notice = new Notification('Alarm Set!');
-        exports.setTimeout(notice.close.bind(notice), 5000);
-      });
-    },
-
-    setAlarm(){
-	  console.log("Alarm set.");
+setAlarm=function(){
       var current=new Date();
-      var year=current.getFullYear();
-      var month=current.getMonth();
+      var yr=current.getFullYear();
+      var mon=current.getMonth();
       var date=current.getDate();
-      var hour=current.getHours();
-      var minute=current.getMinutes();
-      var second=current.getSeconds();
+      var h=current.getHours();
+      var m=current.getMinutes();
+      var s=current.getSeconds();
       var setmin=parseInt(document.getElementById('minute').value);
       var setsec=parseInt(document.getElementById('second').value);
-      var setClockTime=new Date(year, month, date, hour, minute + setmin, second + setsec, current.getMilliseconds());
-
-	  
-      var request=navigator.mozAlarms.add(setClockTime, 'honorTimezone');
-        request.onsuccess=function() {
-          console.log("Time's up!");
-        };
-        request.error=function() {
-          console.log("Error: " + this.error.name);
-        };
+      alarmTime=new Date(yr, mon, date, h, m+setmin, s+setsec, current.getMilliseconds());
     }
-  };
-
-  exports.clock = clock;
-  exports.time = time;
-})(window);
