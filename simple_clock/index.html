@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Hello World</title>
+    <title>Simple Clock</title>
 
     <style>
       body {
@@ -18,9 +18,23 @@
 
   </head>
 
-  <body>
+  <body onload="start()">
     <!-- This code is in the public domain. Enjoy! -->
-    <h1>Hello World</h1>
+    <h1>Simple Clock</h1>
+	<h2>Current Time</h2>
+    <h3 id="clock"></h3>
+	
+	<h2>Timer</h2>
+    <h3 id="timer">00:00.00</h3>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+    <button id="reset">reset</button>
+    
+	<h2>Alarm</h2>
+	<div id="time">
+      <select id="minute"></select>m:<select id="second"></select>s
+    </div>
+    <button id="setAlarm">set</button>
   </body>
 
 </html>
